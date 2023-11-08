@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "8bit";
+    src: url('/src/assets/fonts/PressStart2P-Regular.ttf');
+}
+
 /* Page Structure */
 body {
     width: 100vw;
@@ -14,6 +19,15 @@ body {
     display: flex;
     align-items: center;
     padding-left: 20px;
+    font-family: "8bit";
+}
+
+.header-title {
+    color: red;
+}
+
+.pop {
+    color: black;
 }
 
 .sidebar {
