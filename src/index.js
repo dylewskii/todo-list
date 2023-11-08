@@ -1,4 +1,5 @@
 // --- CSS ---
+import 'normalize.css';
 import './style.css';
 
 // --- Modules ---
