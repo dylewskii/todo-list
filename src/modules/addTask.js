@@ -1,11 +1,11 @@
-export function addTask(title, description, dueDate, priority){
+export function addTask(title, description, priority, dueDate="none", projectName="home"){
     const task = {};
 
     task.title = title;
     task.desc = description;
-    task.dueDate = dueDate;
-    task.title = title;
     task.priority = priority;
+    task.dueDate = dueDate;
+    task.project = projectName;
 
     return task;
 }

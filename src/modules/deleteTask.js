@@ -1,10 +1,14 @@
-import { allTasks } from "..";
+import { allProjects } from "..";
 
-export function deleteTask(taskName) {
-    if (!allTasks.hasOwnProperty(taskName)){
-        console.log("Task not found");
-        return "task not found";
+export function deleteTask(taskTitle, projectName="home"){
+    if (allProjects.hasOwnProperty(projectName)){
+        const project = allProjects[projectName];
+        if (project.hasOwnProperty(taskTitle)){
+            console.log("task deleted")
+            delete project[taskTitle];
+        } else {
+            console.log("task not found in project")
+        }
+
     }
-    delete allTasks[taskName];
-    console.log(taskName + " deleted from allTasks");
 }

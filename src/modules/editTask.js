@@ -1,10 +1,10 @@
-import { allTasks } from "..";
+import { allProjects } from "..";
 
-export function editTask(taskName, taskProperty, newTaskProperty) {
-    if (!allTasks.hasOwnProperty(taskName)){
+export function editTask(taskName, taskProperty, newTaskProperty, projectName="home") {
+    if (!allProjects[projectName].hasOwnProperty(taskName)){
         console.log("Task not found");
         return "task not found";
     }
-    allTasks[taskName][taskProperty] = `${newTaskProperty}`;
-    console.log(taskName + " edit");
+    allProjects[projectName][taskName][taskProperty] = `${newTaskProperty}`;
+    console.log(taskName + " edited");
 }

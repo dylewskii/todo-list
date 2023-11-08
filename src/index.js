@@ -1,14 +1,29 @@
-// CSS
+// --- CSS ---
 import './style.css';
-// Modules
+
+// --- Modules ---
+// project
+import { addProject } from './modules/addProject';
+import { deleteProject } from './modules/deleteProject';
+// tasks
 import { addTask } from './modules/addTask';
 import { deleteTask } from './modules/deleteTask';
 import { editTask } from './modules/editTask';
+// display
 
-export const allTasks = {};
+// --- Main ---
+export const allProjects = {
+    "home": [],
+    "gym": [],
+    "work": []
+};
 
-let cookFood = addTask("Cook Food", "Need to make dumplings", '10/10/2010', 'low');
-const taskName1 = cookFood.title;
-let playFootball = addTask("Play Futbol", "Need to play futball", '11/11/2011', 'high');
-const taskName2 = playFootball.title;
+let task1 = addTask("Cook Food", "Need to make dumplings", 'low');
+let task2 = addTask("Play Futbol", "Need to play futball", 'high', '10/10/2010', "home");
+// let task3 = addTask("Complete Coursework", "Maths needs completing", '14/14/2014', 'med', "work");
 
+allProjects[task1.project].push(task1);
+allProjects[task2.project].push(task2);
+// allProjects[task3.project].push(task3);
+
+console.log(allProjects)
