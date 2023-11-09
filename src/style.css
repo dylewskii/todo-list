@@ -54,7 +54,14 @@ body {
     flex-direction: column;
     padding: 50px 20px;
     overflow-x: hidden;
+    background-color: grey;
 }
+
+.tab--active {
+    background-color: aqua;
+    height: 2.5rem;
+}
+
 
 /* Tasks */
 .task {
@@ -64,6 +71,7 @@ body {
     align-items: center;
     padding: 0 10px;
     font-size: 0.8rem;
+    background-color: white;
 }
 
 .task__checkbox {

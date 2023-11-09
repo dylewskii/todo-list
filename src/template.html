@@ -15,53 +15,31 @@
             <h4><span id="task-amount"></span> tasks left today</h4>
         </div>
     </section>
-
+    
     <div class="content">
-        <div class="task" data-taskNr="1">
-            <label class="task__checkbox">
-                <input type="checkbox" class="nes-checkbox" checked />
-                <span></span>
-            </label>
-            <div class="task__title">
-                <p>Exercise</p>
-            </div>
-            <div class="task__controls">
-                <button class="task-btn nes-btn">Info</button>
-                <button class="task-btn nes-btn">Edit</button>
-                <button class="task-btn nes-btn is-error">X</button>
-            </div>
+        <div class="tab-container">
+            <!-- <button class="tab-btn tab--active" data-for-tab="1">Home</button>
+            <button class="tab-btn" data-for-tab="2">Gym</button> -->
         </div>
 
-        <div class="task" data-taskNr="2">
-            <label class="task__checkbox">
-                <input type="checkbox" class="nes-checkbox" checked />
-                <span></span>
-            </label>
-            <div class="task__title">
-                <p>Walk</p>
-            </div>
-            <div class="task__controls">
-                <button class="task-btn nes-btn">Info</button>
-                <button class="task-btn nes-btn">Edit</button>
-                <button class="task-btn nes-btn is-error">X</button>
-            </div>
-        </div>
-
-        <div class="task" data-taskNr="3">
-            <label class="task__checkbox">
-                <input type="checkbox" class="nes-checkbox" checked />
-                <span></span>
-            </label>
-            <div class="task__title">
-                <p>Swim</p>
-            </div>
-            <div class="task__controls">
-                <button class="task-btn nes-btn">Info</button>
-                <button class="task-btn nes-btn">Edit</button>
-                <button class="task-btn nes-btn is-error">X</button>
+        <div class="task-container">
+            <div class="task task--active" data-tab="1">
+                <label class="task__checkbox">
+                    <input type="checkbox" class="nes-checkbox checkbox" checked />
+                    <span></span>
+                </label>
+                <div class="task__title">
+                    <p>Walk</p>
+                </div>
+                <div class="task__controls">
+                    <button class="task-btn nes-btn" id="infoBtn">Info</button>
+                    <button class="task-btn nes-btn" id="editBtn">Edit</button>
+                    <button class="task-btn nes-btn is-error" id="deleteBtn">X</button>
+                </div>
             </div>
         </div>
     </div>
+            
     <div class="task-add-container">
         <button class="add-btn nes-btn is-primary">+</button>
     </div>

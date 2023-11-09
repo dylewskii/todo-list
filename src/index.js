@@ -12,12 +12,13 @@ import { addTask } from './modules/addTask';
 import { deleteTask } from './modules/deleteTask';
 import { editTask } from './modules/editTask';
 // display
+import { render } from './modules/render';
 
 // --- Main ---
 export const allProjects = {
     home: {},
     gym: {},
-    work: {}
+    work: {},
 };
 
 let task1 = addTask("Cook Food", "Need to make dumplings", 'low');
@@ -26,6 +27,8 @@ let task2 = addTask("Play Futbol", "Need to play futball", 'high', '10/10/2010',
 
 allProjects[task1.project][task1.title] = task1;
 allProjects[task2.project][task2.title] = task2;
-
-
 console.log(allProjects)
+
+
+document.addEventListener("DOMContentLoaded", render());
+
