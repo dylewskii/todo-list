@@ -1,5 +1,6 @@
 // --- CSS ---
 import 'normalize.css';
+import "nes.css/css/nes.min.css";
 import './style.css';
 
 // --- Modules ---
@@ -26,7 +27,5 @@ let task2 = addTask("Play Futbol", "Need to play futball", 'high', '10/10/2010',
 allProjects[task1.project][task1.title] = task1;
 allProjects[task2.project][task2.title] = task2;
 
-deleteTask("Cook Food", "home");
-deleteTask("Play Futbol", "soup");
 
 console.log(allProjects)

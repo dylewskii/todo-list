@@ -10,49 +10,60 @@
         <h1 class="header-title"><span class="pop">DO</span> 8B<span class="pop">IT NOW</span></h1>
     </header>
 
-    <section class="sidebar">
-        <h2>Home</h2>
-        <h2>Projects</h2>
-        <ul>
-            <li>Gym</li>
-            <li>School</li>
-            <li>Work</li>
-        </ul>
+    <section class="subheader">
+        <div>
+            <h4><span id="task-amount"></span> tasks left today</h4>
+        </div>
     </section>
 
     <div class="content">
         <div class="task" data-taskNr="1">
-            <div class="task__details">
-                <p>Swim</p>
+            <label class="task__checkbox">
+                <input type="checkbox" class="nes-checkbox" checked />
+                <span></span>
+            </label>
+            <div class="task__title">
+                <p>Exercise</p>
             </div>
             <div class="task__controls">
-                <button class="taskBtn">Details</button>
-                <button class="taskBtn">Edit</button>
-                <button class="taskBtn">Delete</button>
+                <button class="task-btn nes-btn">Info</button>
+                <button class="task-btn nes-btn">Edit</button>
+                <button class="task-btn nes-btn is-error">X</button>
             </div>
         </div>
 
         <div class="task" data-taskNr="2">
-            <div class="task__details">
+            <label class="task__checkbox">
+                <input type="checkbox" class="nes-checkbox" checked />
+                <span></span>
+            </label>
+            <div class="task__title">
                 <p>Walk</p>
             </div>
             <div class="task__controls">
-                <button class="taskBtn">Details</button>
-                <button class="taskBtn">Edit</button>
-                <button class="taskBtn">Delete</button>
+                <button class="task-btn nes-btn">Info</button>
+                <button class="task-btn nes-btn">Edit</button>
+                <button class="task-btn nes-btn is-error">X</button>
             </div>
         </div>
 
         <div class="task" data-taskNr="3">
-            <div class="task__details">
-                <p>Homework</p>
+            <label class="task__checkbox">
+                <input type="checkbox" class="nes-checkbox" checked />
+                <span></span>
+            </label>
+            <div class="task__title">
+                <p>Swim</p>
             </div>
             <div class="task__controls">
-                <button class="taskBtn">Details</button>
-                <button class="taskBtn">Edit</button>
-                <button class="taskBtn">Delete</button>
+                <button class="task-btn nes-btn">Info</button>
+                <button class="task-btn nes-btn">Edit</button>
+                <button class="task-btn nes-btn is-error">X</button>
             </div>
         </div>
+    </div>
+    <div class="task-add-container">
+        <button class="add-btn nes-btn is-primary">+</button>
     </div>
 </body>
 </html>

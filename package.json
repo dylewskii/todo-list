@@ -23,6 +23,7 @@
     "webpack-merge": "^5.10.0"
   },
   "dependencies": {
+    "nes.css": "^2.3.0",
     "normalize.css": "^8.0.1"
   }
 }
