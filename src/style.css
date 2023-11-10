@@ -130,6 +130,33 @@ body {
     height: 70px;
 }
 
+/* Dialog/Modal */
+.dialog-title-container {
+    display: flex;
+    justify-content: center;
+}
+
+.dialog-title {
+    color: #1E9CED;
+    text-decoration: underline;
+}
+
+form label {
+    margin-top: 15px;
+    font-size: 0.8rem;
+}
+
+#project_field {
+    margin-bottom: 30px;
+}
+
+.dialog-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
 @media (min-width: 390px){
     .task {
         width: 90%;

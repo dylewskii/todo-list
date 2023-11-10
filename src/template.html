@@ -40,9 +40,51 @@
             </div> -->
         </div>
     </div>
+
+    <!-- Dialog/Modal -->
+    <section class="task-add-container">
+        <button class="add-btn nes-btn is-primary" onclick="document.getElementById('dialog-default').showModal();">+</button>
+        <dialog class="nes-dialog" id="dialog-default">
+            <form method="dialog">
+                <div class="dialog-title-container">
+                    <p class="dialog-title">ADD A TODO</p>
+                </div>
+
+                <div class="nes-field">
+                    <label for="task_field">Title:</label>
+                    <input type="text" id="task_field" class="nes-input">
+                </div>
             
-    <div class="task-add-container">
-        <button class="add-btn nes-btn is-primary">+</button>
-    </div>
+                <div>
+                    <label for="desc_field">Description:</label>
+                    <textarea id="desc_field" class="nes-textarea"></textarea>
+                </div>
+
+                <label for="priority_select">Priority:</label>
+                <div class="nes-select">
+                    <select required id="priority_select">
+                        <option value="low" selected>Low</option>
+                        <option value="med">Medium</option>
+                        <option value="hi">High</option>
+                    </select>
+                </div>
+
+                <div class="nes-field">
+                    <label for="date_field">Due Date:</label>
+                    <input type="date" id="date_field" class="nes-input">
+                </div>
+
+                <div class="nes-field">
+                    <label for="project_field">Project:</label>
+                    <input type="text" id="project_field" class="nes-input">
+                </div>
+
+                <menu class="dialog-menu">
+                    <button class="nes-btn">Cancel</button>
+                    <button class="nes-btn is-primary">Confirm</button>
+                </menu>
+            </form>
+        </dialog>
+    </section>
 </body>
 </html>
