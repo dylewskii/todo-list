@@ -1,4 +1,4 @@
-import { allProjects } from "..";
+import { allProjects } from "../..";
 
 export function deleteTask(taskTitle, projectName="home"){
     if (allProjects.hasOwnProperty(projectName)){

@@ -1,4 +1,4 @@
-import { allProjects } from "..";
+import { allProjects } from "../..";
 
 export const display = function() {
     const controller = {};

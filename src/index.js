@@ -5,14 +5,14 @@ import './style.css';
 
 // --- Modules ---
 // project
-import { addProject } from './modules/addProject';
-import { deleteProject } from './modules/deleteProject';
+import { addProject } from './modules/projects/addProject';
+import { deleteProject } from './modules/projects/deleteProject';
 // tasks
-import { addTask } from './modules/addTask';
-import { deleteTask } from './modules/deleteTask';
-import { editTask } from './modules/editTask';
+import { addTask } from './modules/tasks/addTask';
+import { deleteTask } from './modules/tasks/deleteTask';
+import { editTask } from './modules/tasks/editTask';
 // display
-import { display } from './modules/render';
+import { display } from './modules/display/render';
 
 // --- Main ---
 export const allProjects = {

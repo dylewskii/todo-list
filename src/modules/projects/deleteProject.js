@@ -1,4 +1,4 @@
-import { allProjects } from "..";
+import { allProjects } from "../..";
 
 export function deleteProject(projectName) {
     if (!allProjects.hasOwnProperty(projectName)){

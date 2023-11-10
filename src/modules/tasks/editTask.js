@@ -1,4 +1,4 @@
-import { allProjects } from "..";
+import { allProjects } from "../..";
 
 export function editTask(taskName, taskProperty, newTaskProperty, projectName="home") {
     if (!allProjects[projectName].hasOwnProperty(taskName)){
