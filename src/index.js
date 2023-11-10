@@ -7,13 +7,10 @@ import './style.css';
 // project
 import { addProject } from './modules/projects/addProject';
 import { deleteProject } from './modules/projects/deleteProject';
-// tasks
-import { addTask } from './modules/tasks/addTask';
-import { deleteTask } from './modules/tasks/deleteTask';
-import { editTask } from './modules/tasks/editTask';
+
 // display
 import { display } from './modules/display/render';
-// import { display2 } from './modules/display/test';
+import { dialog } from './modules/display/modals';
 
 // --- Main ---
 export const allProjects = {
@@ -32,14 +29,9 @@ export const allProjects = {
     }
 };
 
-// let task1 = addTask("Cook Food", "Need to make dumplings", 'low');
-// let task2 = addTask("Play Futbol", "Need to play futball", 'high', '10/10/2010', "home");
-// let task3 = addTask("Complete Coursework", "Maths needs completing", '14/14/2014', 'med', "work");
-
-// allProjects[task1.project][task1.title] = task1;
-// allProjects[task2.project][task2.title] = task2;
-// console.log(allProjects)
 const displayController = display();
+const modalController = dialog();
 
 document.addEventListener("DOMContentLoaded", displayController.renderTabs());
 document.addEventListener("DOMContentLoaded", displayController.handleTabClick());
+document.addEventListener("DOMContentLoaded", modalController.loadTaskAdd());

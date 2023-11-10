@@ -43,21 +43,21 @@
 
     <!-- Dialog/Modal -->
     <section class="task-add-container">
-        <button class="add-btn nes-btn is-primary" onclick="document.getElementById('dialog-default').showModal();">+</button>
-        <dialog class="nes-dialog" id="dialog-default">
-            <form method="dialog">
+        <button class="add-btn nes-btn is-primary" onclick="document.getElementById('dialog-rounded').showModal();">+</button>
+        <dialog class="nes-dialog is-rounded" id="dialog-rounded">
+            <form method="dialog" class="task-form">
                 <div class="dialog-title-container">
                     <p class="dialog-title">ADD A TODO</p>
                 </div>
 
                 <div class="nes-field">
-                    <label for="task_field">Title:</label>
-                    <input type="text" id="task_field" class="nes-input">
+                    <label for="title_field">Title:</label>
+                    <input type="text" id="title_field" class="nes-input" name="title">
                 </div>
             
                 <div>
                     <label for="desc_field">Description:</label>
-                    <textarea id="desc_field" class="nes-textarea"></textarea>
+                    <textarea id="desc_field" class="nes-textarea" name="desc"></textarea>
                 </div>
 
                 <label for="priority_select">Priority:</label>
@@ -71,7 +71,7 @@
 
                 <div class="nes-field">
                     <label for="date_field">Due Date:</label>
-                    <input type="date" id="date_field" class="nes-input">
+                    <input type="date" id="date_field" class="nes-input" name="date">
                 </div>
 
                 <div class="nes-field">
@@ -81,7 +81,7 @@
 
                 <menu class="dialog-menu">
                     <button class="nes-btn">Cancel</button>
-                    <button class="nes-btn is-primary">Confirm</button>
+                    <button class="nes-btn is-primary" id="dialog-confirm">Confirm</button>
                 </menu>
             </form>
         </dialog>
