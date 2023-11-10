@@ -1,4 +1,5 @@
 import { allProjects } from "../..";
+import { deleteTask } from "../tasks/deleteTask";
 
 export const display = function() {
     const controller = {};
@@ -34,16 +35,20 @@ export const display = function() {
         })
     };
 
-    const renderTasks = function(tab){
-        const selectedTab = tab.target.textContent.toLowerCase();
+    const renderTasks = function(){
+        const activeTab = document.querySelector(".tab--active");
+        const selectedTab = activeTab.textContent.toLowerCase();
         const selectedTabTasks = Object.keys(allProjects[selectedTab]);
 
+        // remove current tasks on screen
+        while (taskContainer.firstChild) {
+            taskContainer.removeChild(taskContainer.firstChild);
+        }
+
         selectedTabTasks.forEach(task => {
-            const tabIndex = tab.target.dataset.forTab - 1;
             // task div
             const taskDiv = document.createElement("div");
             taskDiv.classList.add("task");
-            taskDiv.setAttribute("data-tab", `${tabIndex}`)
             taskContainer.appendChild(taskDiv)
             
             // first child container
@@ -87,13 +92,30 @@ export const display = function() {
             deleteBtn.classList.add('task-btn', 'nes-btn', 'is-error');
             deleteBtn.id = 'deleteBtn';
             deleteBtn.textContent = 'X';
+            deleteBtn.addEventListener("click", () => {
+                deleteTask(task, selectedTab);
+                renderTasks();
+            })
 
             taskControls.appendChild(infoBtn);
             taskControls.appendChild(editBtn);
             taskControls.appendChild(deleteBtn);
 
             taskDiv.appendChild(taskControls);
+
+            
         })
+    }
+
+    const bindEventListeners = function () {
+
+        // deleteBtn.addEventListener("click", () => {
+        //     console.log(task)
+        //     deleteTask(task, selectedTab)
+        //     renderTasks()
+        //     console.log(selectedTabTasks)
+        //     console.log(allProjects)
+        // })
     }
 
     const handleTabClick = function(initialTab) {
@@ -115,11 +137,11 @@ export const display = function() {
                 btn.classList.add("tab--active");
 
                 // Clear task container
-                while (taskContainer.firstChild) {
-                    taskContainer.removeChild(taskContainer.firstChild);
-                }
+                // while (taskContainer.firstChild) {
+                //     taskContainer.removeChild(taskContainer.firstChild);
+                // }
 
-                renderTasks(e)
+                renderTasks()
             })
         })
 

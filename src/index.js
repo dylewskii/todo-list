@@ -13,6 +13,7 @@ import { deleteTask } from './modules/tasks/deleteTask';
 import { editTask } from './modules/tasks/editTask';
 // display
 import { display } from './modules/display/render';
+// import { display2 } from './modules/display/test';
 
 // --- Main ---
 export const allProjects = {
@@ -28,7 +29,7 @@ export const allProjects = {
     food: {
         "cook food": ["cook food", "Need to make dumplings", 'low'],
         "make bread": ["make bread", "Need to make bread", 'med']
-    },
+    }
 };
 
 // let task1 = addTask("Cook Food", "Need to make dumplings", 'low');
