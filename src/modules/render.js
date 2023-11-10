@@ -36,10 +36,7 @@ export const display = function() {
 
     const renderTasks = function(tab){
         const selectedTab = tab.target.textContent.toLowerCase();
-        console.log(selectedTab)
-
         const selectedTabTasks = Object.keys(allProjects[selectedTab]);
-        console.log(selectedTabTasks)
 
         selectedTabTasks.forEach(task => {
             const tabIndex = tab.target.dataset.forTab - 1;
@@ -126,7 +123,7 @@ export const display = function() {
             })
         })
 
-        // Ensure first page loads is the 'Home' project tab
+        // Ensure first page load is the 'Home' project tab
         const selectedTabButton = Array.from(tabBtns).find(btn => btn.textContent.toLowerCase() === selectedTab);
         selectedTabButton.click();
     }
