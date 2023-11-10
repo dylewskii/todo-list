@@ -58,10 +58,13 @@ body {
 }
 
 .tab--active {
-    background-color: aqua;
+    background-color: #1E9CED;
     height: 2.5rem;
 }
 
+.tab--active:focus {
+    outline: none;
+}
 
 /* Tasks */
 .task {
