@@ -1,25 +1,25 @@
 import { allProjects } from "../..";
 import { deleteTask } from "../tasks/deleteTask";
 
+function capitalizedWords(str) {
+    const words = str.split(' ');
+    const capitalizedWords = words.map(word => {
+        if (word.length > 0) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        } else {
+            return '';
+        }
+    });
+    
+    return capitalizedWords.join(' ');
+}
+
 export const display = function() {
     const controller = {};
     const allProjectsArr = Object.keys(allProjects);
     const tabContainer = document.querySelector(".tab-container");
     const taskContainer = document.querySelector(".task-container");
     const content = document.querySelector(".content");
-
-    function capitalizedWords(str) {
-        const words = str.split(' ');
-        const capitalizedWords = words.map(word => {
-            if (word.length > 0) {
-                return word.charAt(0).toUpperCase() + word.slice(1);
-            } else {
-                return '';
-            }
-        });
-        
-        return capitalizedWords.join(' ');
-    }
 
     const renderTabs = function() {
         while (tabContainer.firstChild) {
@@ -36,8 +36,7 @@ export const display = function() {
     };
 
     const renderTasks = function(){
-        const activeTab = document.querySelector(".tab--active");
-        const selectedTab = activeTab.textContent.toLowerCase();
+        const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
         const selectedTabTasks = Object.keys(allProjects[selectedTab]);
 
         // remove current tasks on screen
@@ -94,6 +93,7 @@ export const display = function() {
             deleteBtn.textContent = 'X';
             deleteBtn.addEventListener("click", () => {
                 deleteTask(task, selectedTab);
+                taskCounter();
                 renderTasks();
             })
 
@@ -102,20 +102,7 @@ export const display = function() {
             taskControls.appendChild(deleteBtn);
 
             taskDiv.appendChild(taskControls);
-
-            
         })
-    }
-
-    const bindEventListeners = function () {
-
-        // deleteBtn.addEventListener("click", () => {
-        //     console.log(task)
-        //     deleteTask(task, selectedTab)
-        //     renderTasks()
-        //     console.log(selectedTabTasks)
-        //     console.log(allProjects)
-        // })
     }
 
     const handleTabClick = function(initialTab) {
@@ -135,12 +122,7 @@ export const display = function() {
                     otherBtn.classList.remove("tab--active");
                 });
                 btn.classList.add("tab--active");
-
-                // Clear task container
-                // while (taskContainer.firstChild) {
-                //     taskContainer.removeChild(taskContainer.firstChild);
-                // }
-
+                taskCounter()
                 renderTasks()
             })
         })
@@ -150,10 +132,19 @@ export const display = function() {
         selectedTabButton.click();
     }
 
+    const taskCounter = function(){
+        const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
+        const taskCount = document.getElementById("task-count");
+        const currTasks = Object.keys(allProjects[selectedTab]);
+
+        const plural = currTasks.length === 1 ? "" : "s";
+        taskCount.textContent = currTasks.length;
+        taskCount.nextElementSibling.textContent = `task${plural} left today`;
+    }
+
     controller.renderTabs = renderTabs;
     controller.renderTasks = renderTasks;
     controller.handleTabClick = handleTabClick;
 
     return controller;
-  
 };

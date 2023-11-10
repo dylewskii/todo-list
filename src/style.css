@@ -44,6 +44,15 @@ body {
     padding-right: 40px;
 }
 
+.subheader > div {
+    display: flex;
+    overflow: hidden;
+}
+
+#task-count {
+    margin-right: 5px;
+}
+
 .content {
     grid-row: 3;
     width: 100%;
