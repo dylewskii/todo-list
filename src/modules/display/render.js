@@ -1,18 +1,22 @@
 import { allProjects } from "../..";
 import { deleteTask } from "../tasks/deleteTask";
 
-function capitalizedWords(str) {
+function changeCase(str, letterCase="uppercase") {
     const words = str.split(' ');
-    const capitalizedWords = words.map(word => {
-        if (word.length > 0) {
+
+    const updatedWords = words.map(word => {
+        if (letterCase === 'uppercase' && word.length > 0){
             return word.charAt(0).toUpperCase() + word.slice(1);
+        } else if (letterCase === 'lowercase' && word.length > 0){
+            return word.charAt(0).toLowerCase() + word.slice(1);
         } else {
             return '';
         }
     });
-    
-    return capitalizedWords.join(' ');
-}
+
+    return updatedWords.join(' ');
+};
+
 
 export const display = function() {
     const controller = {};
@@ -28,7 +32,7 @@ export const display = function() {
 
         allProjectsArr.forEach((project, index) => {
             const newTab = document.createElement("button");
-            newTab.textContent = `${capitalizedWords(project)}`;
+            newTab.textContent = `${changeCase(project)}`;
             newTab.classList.add("tab-btn");
             newTab.setAttribute("data-for-tab", `${index + 1}`);
             tabContainer.appendChild(newTab);
@@ -68,7 +72,7 @@ export const display = function() {
             taskTitle.classList.add('task__title');
 
             const p = document.createElement('p');
-            p.textContent = `${capitalizedWords(task)}`;
+            p.textContent = `${changeCase(task)}`;
 
             taskTitle.appendChild(p);
             taskDiv.appendChild(taskTitle);
