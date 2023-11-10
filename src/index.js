@@ -40,7 +40,5 @@ export const allProjects = {
 // console.log(allProjects)
 const displayController = display();
 
-
 document.addEventListener("DOMContentLoaded", displayController.renderTabs());
 document.addEventListener("DOMContentLoaded", displayController.handleTabClick());
-
