@@ -34,4 +34,4 @@ const modalController = modal();
 
 document.addEventListener("DOMContentLoaded", displayController.renderTabs());
 document.addEventListener("DOMContentLoaded", displayController.handleTabClick());
-document.addEventListener("DOMContentLoaded", modalController.taskFormSubmit());
+document.addEventListener("DOMContentLoaded", modalController.addTodoModal());

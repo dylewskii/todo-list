@@ -1,22 +1,23 @@
 import { allProjects } from "../..";
 import { addTask } from "../tasks/addTask";
+import { changeCase } from "../misc/changeCase";
 
 export const modal = function() {
     const modal = {};
 
-    const taskFormSubmit = function (){
+    const addTodoModal = function (){
         const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
         const confirmBtn = document.getElementById("dialog-confirm");
         const cancelBtn = document.getElementById("dialog-cancel");
 
-        const dialogRounded = document.getElementById("dialog-rounded");
-        const form = document.querySelector(".task-form");
+        const addTodoDialog = document.getElementById("add-todo-dialog");
+        const form = document.querySelector(".add-todo-form");
 
         form.addEventListener("submit", (e) => {
             e.preventDefault();
 
             if (e.submitter.id === "dialog-cancel"){
-                dialogRounded.close();
+                addTodoDialog.close();
                 form.reset();
                 return;
             }
@@ -36,12 +37,48 @@ export const modal = function() {
 
             addTask(title, desc, priority, dueDate, project);
 
-            dialogRounded.close();
+            addTodoDialog.close();
             form.reset();  
         })
     }
 
-    modal.taskFormSubmit = taskFormSubmit;
+    const infoModal = function (e){
+        const infoContent = document.querySelector(".info-form-content");
+        const labels = ["Title:", "Description:", "Priority:", "Due Date:", "Project:"];
+
+        while (infoContent.firstChild) {
+            infoContent.removeChild(infoContent.firstChild);
+        };
+
+        const infoModalBtn = document.getElementById("info-dialog");
+        infoModalBtn.showModal(e);
+
+        const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
+        const clickedTask = changeCase(e.target.parentElement.parentElement.children[1].textContent, "lowercase");
+
+        labels.forEach(label => {
+            const infoContainer = document.createElement("div");
+            infoContainer.classList.add("nes-container", "is-rounded", "with-title");
+
+            const title = document.createElement("p");
+            title.classList.add("title");
+            title.textContent = label;
+
+            const content = document.createElement("p");
+            content.textContent = "";
+
+            infoContainer.appendChild(title);
+            infoContainer.appendChild(content);
+
+            infoContent.appendChild(infoContainer);
+        });
+
+
+
+    }
+
+    modal.addTodoModal = addTodoModal;
+    modal.infoModal = infoModal;
 
     return modal;
 }

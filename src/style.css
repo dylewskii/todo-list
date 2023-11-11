@@ -130,7 +130,14 @@ body {
     height: 70px;
 }
 
-/* Dialog/Modal */
+/* --- Dialogs/Modals --- */
+
+/* Info Modal */
+.info-form-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .required-symbol {
     color: #1E9CED;
 }
@@ -138,9 +145,11 @@ body {
 .dialog-title-container {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .dialog-title {
+    font-size: 1.2rem;
     color: #1E9CED;
     text-decoration: underline;
 }

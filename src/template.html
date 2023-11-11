@@ -41,13 +41,54 @@
         </div>
     </div>
 
-    <!-- Dialog/Modal -->
+    <!-- Info Dialog/Modal -->
+    <section class="info-container">
+        <dialog class="nes-dialog is-rounded" id="info-dialog">
+            <form method="dialog" class="info-form">
+                <div class="info-form-header">
+                    <h6 class="dialog-title info-title">INFORMATION</h6>
+                    <menu class="info-dialog-menu">
+                        <button class="nes-btn" id="info-close">X</button>
+                    </menu>
+                </div>
+                <div class="info-form-content"></div>
+
+                <!-- <div class="nes-container is-rounded with-title">
+                    <p class="title">Title:</p>
+                    <p></p>
+                </div>
+
+                <div class="nes-container is-rounded with-title">
+                    <p class="title">Description:</p>
+                    <p></p>
+                </div>
+
+                <div class="nes-container is-rounded with-title">
+                    <p class="title">Priority:</p>
+                    <p></p>
+                </div>
+
+                <div class="nes-container is-rounded with-title">
+                    <p class="title">Due Date:</p>
+                    <p></p>
+                </div>
+
+                <div class="nes-container is-rounded with-title">
+                    <p class="title">Project:</p>
+                    <p></p>
+                </div> -->
+            </form>
+        </dialog>
+    </section>
+
+
+    <!-- Add TODO Dialog/Modal -->
     <section class="task-add-container">
-        <button class="add-btn nes-btn is-primary" onclick="document.getElementById('dialog-rounded').showModal();">+</button>
-        <dialog class="nes-dialog is-rounded" id="dialog-rounded">
-            <form method="dialog" class="task-form">
+        <button class="add-btn nes-btn is-primary" onclick="document.getElementById('add-todo-dialog').showModal();">+</button>
+        <dialog class="nes-dialog is-rounded" id="add-todo-dialog">
+            <form method="dialog" class="add-todo-form">
                 <div class="dialog-title-container">
-                    <p class="dialog-title">ADD A TODO</p>
+                    <h6 class="dialog-title add-todo-title">ADD A TODO</h6>
                 </div>
 
                 <div class="nes-field">

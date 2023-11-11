@@ -1,6 +1,7 @@
 import { allProjects } from "../..";
 import { deleteTask } from "../tasks/deleteTask";
 import { changeCase } from "../misc/changeCase";
+import { modal } from "./modals";
 
 export const render = function() {
     const controller = {};
@@ -68,6 +69,10 @@ export const render = function() {
             infoBtn.classList.add("task-btn", "nes-btn");
             infoBtn.id = "infoBtn";
             infoBtn.textContent = "Info";
+            infoBtn.addEventListener("click", (e) => {
+                const modalController = modal();
+                modalController.infoModal(e);
+            })
 
             const editBtn = document.createElement("button");
             editBtn.classList.add("task-btn", "nes-btn");
