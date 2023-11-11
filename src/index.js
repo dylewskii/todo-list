@@ -9,7 +9,7 @@ import { addProject } from './modules/projects/addProject';
 import { deleteProject } from './modules/projects/deleteProject';
 
 // display
-import { render } from './modules/display/screen';
+import { render } from './modules/display/render';
 import { modal } from './modules/display/modals';
 
 // --- Main ---

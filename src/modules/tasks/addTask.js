@@ -1,7 +1,7 @@
 import { allProjects } from "../..";
-import { render } from "../display/screen";
+import { render } from "../display/render";
 
-export function addTask(title, description, priority, dueDate="none", projectName="home"){
+export function addTask(title, description="N/A", priority="low", dueDate="N/A", projectName="home"){
     const task = {};
 
     task.title = title;

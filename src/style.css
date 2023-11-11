@@ -131,6 +131,10 @@ body {
 }
 
 /* Dialog/Modal */
+.required-symbol {
+    color: #1E9CED;
+}
+
 .dialog-title-container {
     display: flex;
     justify-content: center;
