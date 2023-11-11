@@ -44,8 +44,6 @@ export const modal = function() {
 
     const infoModal = function (e){
         const infoContent = document.querySelector(".info-form-content");
-        const labels = ["Title:", "Description:", "Priority:", "Due Date:", "Project:"];
-
         while (infoContent.firstChild) {
             infoContent.removeChild(infoContent.firstChild);
         };
@@ -55,26 +53,26 @@ export const modal = function() {
 
         const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
         const clickedTask = changeCase(e.target.parentElement.parentElement.children[1].textContent, "lowercase");
+        const taskArr = allProjects[selectedTab][clickedTask];
+        
+        const labels = ["Title:", "Description:", "Priority:", "Due Date:", "Project:"];
 
-        labels.forEach(label => {
+        for (let i = 0; i < labels.length; i++){
             const infoContainer = document.createElement("div");
             infoContainer.classList.add("nes-container", "is-rounded", "with-title");
 
             const title = document.createElement("p");
             title.classList.add("title");
-            title.textContent = label;
+            title.textContent = labels[i];
 
             const content = document.createElement("p");
-            content.textContent = "";
+            content.textContent = `${taskArr[i]}`;
 
             infoContainer.appendChild(title);
             infoContainer.appendChild(content);
 
             infoContent.appendChild(infoContainer);
-        });
-
-
-
+        }
     }
 
     modal.addTodoModal = addTodoModal;

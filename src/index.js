@@ -15,17 +15,17 @@ import { modal } from './modules/display/modals';
 // --- Main ---
 export const allProjects = {
     home: {
-        "do shopping": ["do groceries", "Need to get groceries", "hi"]
+        "do shopping": ["do groceries", "Need to get groceries", "high", "13/10/2023", "home"]
     },
 
     gym: {
-        "workout": ["workout", "10 push ups", "hi"],
-        "swim": ["swim", "10 laps", "med"],
+        "workout": ["workout", "10 push ups", "high", "13/10/2023", "gym"],
+        "swim": ["swim", "10 laps", "medium", "13/12/2023", "gym"],
     },
 
     food: {
-        "cook food": ["cook food", "Need to make dumplings", "low"],
-        "make bread": ["make bread", "Need to make bread", "med"]
+        "cook food": ["cook food", "Need to make dumplings", "low", "13/10/2023", "food"],
+        "make bread": ["make bread", "Need to make bread", "low", "13/16/2023", "food"]
     }
 };
 
