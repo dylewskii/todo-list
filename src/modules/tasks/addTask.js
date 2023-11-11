@@ -1,4 +1,7 @@
-export function addTask(title, description, priority, dueDate="none", projectName="home", completed=false){
+import { allProjects } from "../..";
+import { render } from "../display/screen";
+
+export function addTask(title, description, priority, dueDate="none", projectName="home"){
     const task = {};
 
     task.title = title;
@@ -6,7 +9,10 @@ export function addTask(title, description, priority, dueDate="none", projectNam
     task.priority = priority;
     task.dueDate = dueDate;
     task.project = projectName;
-    task.completed = completed;
 
-    return task;
+    const taskValues = Object.values(task);
+    allProjects[task.project][task.title] = taskValues;
+
+    const displayController = render();
+    displayController.renderTasks();
 }

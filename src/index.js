@@ -9,13 +9,13 @@ import { addProject } from './modules/projects/addProject';
 import { deleteProject } from './modules/projects/deleteProject';
 
 // display
-import { display } from './modules/display/render';
-import { dialog } from './modules/display/modals';
+import { render } from './modules/display/screen';
+import { modal } from './modules/display/modals';
 
 // --- Main ---
 export const allProjects = {
     home: {
-        "do shopping": ["do groceries", "Need to get groceries", 'hi']
+        "do shopping": ["do groceries", "Need to get groceries", "hi"]
     },
 
     gym: {
@@ -24,14 +24,14 @@ export const allProjects = {
     },
 
     food: {
-        "cook food": ["cook food", "Need to make dumplings", 'low'],
-        "make bread": ["make bread", "Need to make bread", 'med']
+        "cook food": ["cook food", "Need to make dumplings", "low"],
+        "make bread": ["make bread", "Need to make bread", "med"]
     }
 };
 
-const displayController = display();
-const modalController = dialog();
+const displayController = render();
+const modalController = modal();
 
 document.addEventListener("DOMContentLoaded", displayController.renderTabs());
 document.addEventListener("DOMContentLoaded", displayController.handleTabClick());
-document.addEventListener("DOMContentLoaded", modalController.loadTaskAdd());
+document.addEventListener("DOMContentLoaded", modalController.taskFormSubmit());
