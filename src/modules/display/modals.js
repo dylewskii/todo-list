@@ -1,5 +1,7 @@
 import { allProjects } from "../..";
 import { addTask } from "../tasks/addTask";
+import { editTask } from "../tasks/editTask";
+import { render } from "./render";
 import { changeCase } from "../misc/changeCase";
 
 export const modal = function() {
@@ -48,8 +50,8 @@ export const modal = function() {
             infoContent.removeChild(infoContent.firstChild);
         };
 
-        const infoModalBtn = document.getElementById("info-dialog");
-        infoModalBtn.showModal(e);
+        const infoDialog = document.getElementById("info-dialog");
+        infoDialog.showModal(e);
 
         const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
         const clickedTask = changeCase(e.target.parentElement.parentElement.children[1].textContent, "lowercase");
@@ -76,9 +78,20 @@ export const modal = function() {
     }
 
     const editModal = function (e){
-        const editContent = document.querySelector(".edit-form-content");
-        const editBtn = document.getElementById("edit-dialog");
-        editBtn.showModal(e);
+        // Provide live color feedback when edits are made
+        const changeColor = function (e) {
+            let editedValue = e.value;
+            if (editedValue === e){
+                e.style.color = "green";
+            } else {
+                e.style.color = "red";
+            }
+        };
+
+        const editForm = document.querySelector(".edit-form");
+        const editFormContent = document.querySelector(".edit-form-content");
+        const editDialog = document.getElementById("edit-dialog");
+        editDialog.showModal(e);
 
         const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
         const clickedTask = changeCase(e.target.parentElement.parentElement.children[1].textContent, "lowercase");
@@ -89,16 +102,6 @@ export const modal = function() {
         let currPriority = document.getElementById("edit_priority_select");
         let currDate = document.getElementById("edit_date_field");
         let currProject = document.getElementById("edit_project_field");
-        
-        // Provide live color feedback when edits are made
-        const changeColor = function (e) {
-            let editedValue = e.value;
-            if (editedValue === e){
-                e.style.color = "green";
-            } else {
-                e.style.color = "red";
-            }
-        }
 
         for (let i = 0; i < taskArr.length; i++){
             if (i === 0){
@@ -121,6 +124,33 @@ export const modal = function() {
                 console.log("Task has too many values");
             }
         }
+
+        editForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            if (e.submitter.id === "edit-cancel"){
+                editDialog.close();
+                editForm.reset();
+                return;
+            }
+
+            let editedValues = [
+                currTitle.value,
+                currDesc.value,
+                currPriority.value,
+                currDate.value,
+                currProject.value
+            ];
+            
+            let ogProject = taskArr[taskArr.length - 1];
+            let ogTitle = taskArr[0];
+
+            editTask(ogProject, ogTitle, editedValues);
+
+            const displayController = render();
+            displayController.renderTasks();
+            editDialog.close()
+        })
     }
 
     modal.addTodoModal = addTodoModal;
@@ -128,4 +158,4 @@ export const modal = function() {
     modal.editModal = editModal;
 
     return modal;
-}
+};

@@ -15,7 +15,7 @@ import { modal } from './modules/display/modals';
 // --- Main ---
 export const allProjects = {
     home: {
-        "do shopping": ["do groceries", "Need to get groceries", "high", "13/10/2023", "home"]
+        "do groceries": ["do groceries", "Need to get groceries", "high", "13/10/2023", "home"]
     },
 
     gym: {
@@ -24,8 +24,8 @@ export const allProjects = {
     },
 
     food: {
-        "cook food": ["cook food", "Need to make dumplings", "low", "13/10/2023", "food"],
-        "make bread": ["make bread", "Need to make bread", "low", "13/16/2023", "food"]
+        "cook food": ["cook food", "prepate dumplings", "low", "13/10/2023", "food"],
+        "make bread": ["make bread", "get bread ingredients", "low", "13/16/2023", "food"]
     }
 };
 
