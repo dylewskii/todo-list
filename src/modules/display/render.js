@@ -47,6 +47,23 @@ export const render = function() {
             taskInput.setAttribute("type", "checkbox");
             taskInput.classList.add("nes-checkbox", "checkbox");
             taskLabel.appendChild(taskInput);
+            // render a green task if completed is true
+            let taskArr = allProjects[selectedTab][task];
+            if (taskArr[taskArr.length - 2]){
+                taskDiv.classList.add("task--completed");
+                taskInput.checked = true;
+            }
+            // toggle class & update allProjects completed status
+            taskInput.addEventListener("click", () => {
+                taskDiv.classList.toggle("task--completed", taskInput.checked);
+                if (taskArr[taskArr.length - 2]){
+                    taskArr.splice(4, 1, false);
+                    taskCounter()
+                } else {
+                    taskArr.splice(4, 1, true);
+                    taskCounter()
+                }
+            })
 
             const taskSpan = document.createElement("span");
             taskLabel.appendChild(taskSpan);
@@ -132,9 +149,11 @@ export const render = function() {
         const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
         const taskCount = document.getElementById("task-count");
         const currTasks = Object.keys(allProjects[selectedTab]);
-
-        const plural = currTasks.length === 1 ? "" : "s";
-        taskCount.textContent = currTasks.length;
+        let tasksLeft = currTasks.filter(task => !allProjects[selectedTab][task][4]);
+        
+        // if only 1 task left, change from plural
+        const plural = tasksLeft.length === 1 ? "" : "s";
+        taskCount.textContent = tasksLeft.length;
         taskCount.nextElementSibling.textContent = `task${plural} left today`;
     }
 

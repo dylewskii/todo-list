@@ -29,15 +29,17 @@ export const modal = function() {
             let priority = document.getElementById("priority_select").value;
             let dueDate = document.getElementById("date_field").value;
             let project = document.getElementById("project_field").value;
-            
+            let completed = document.getElementById("completed_select").value;
+
             // If undefined value provided, set a string value.
             title = title || "N/A"; 
             desc = desc || "N/A"; 
             priority = priority || "low"; 
             dueDate = dueDate || "N/A";
             project = project || "home"; 
+            completed = completed || false;
 
-            addTask(title, desc, priority, dueDate, project);
+            addTask(title, desc, priority, dueDate, completed, project);
 
             addTodoDialog.close();
             form.reset();  
@@ -57,7 +59,7 @@ export const modal = function() {
         const clickedTask = changeCase(e.target.parentElement.parentElement.children[1].textContent, "lowercase");
         const taskArr = allProjects[selectedTab][clickedTask];
         
-        const labels = ["Title:", "Description:", "Priority:", "Due Date:", "Project:"];
+        const labels = ["Title:", "Description:", "Priority:", "Due Date:", "Completed:", "Project:"];
 
         for (let i = 0; i < labels.length; i++){
             const infoContainer = document.createElement("div");
@@ -101,6 +103,7 @@ export const modal = function() {
         let currDesc = document.getElementById("edit_desc_field");
         let currPriority = document.getElementById("edit_priority_select");
         let currDate = document.getElementById("edit_date_field");
+        let currCompleted = document.getElementById("edit_completed_select");
         let currProject = document.getElementById("edit_project_field");
 
         for (let i = 0; i < taskArr.length; i++){
@@ -117,10 +120,12 @@ export const modal = function() {
                 currDate.value = `${taskArr[3]}`;
                 // currDate.addEventListener("input", changeColor(currDate));
             } else if (i === 4){
-                currProject.value = `${taskArr[4]}`;
+                currCompleted.value = `${taskArr[4]}`;
+                // currDate.addEventListener("input", changeColor(currCompleted));
+            } else if (i === 5){
+                currProject.value = `${taskArr[5]}`;
                 // currProject.addEventListener("input", changeColor(currProject));
-            } 
-            else {
+            } else {
                 console.log("Task has too many values");
             }
         }

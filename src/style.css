@@ -17,7 +17,7 @@ body {
 }
 
 .header {
-    background-color: lightblue;
+    background-color: #87ccf8;
     width: 100%;
     grid-row: 1;
     display: flex;
@@ -84,6 +84,10 @@ body {
     padding: 0 10px;
     font-size: 0.8rem;
     background-color: white;
+}
+
+.task--completed {
+    background-color: green;
 }
 
 .task__checkbox {
