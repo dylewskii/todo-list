@@ -78,6 +78,10 @@ export const render = function() {
             editBtn.classList.add("task-btn", "nes-btn");
             editBtn.id = "editBtn";
             editBtn.textContent = "Edit";
+            editBtn.addEventListener("click", (e) => {
+                const modalController = modal();
+                modalController.editModal(e);
+            })
 
             const deleteBtn = document.createElement("button");
             deleteBtn.classList.add("task-btn", "nes-btn", "is-error");

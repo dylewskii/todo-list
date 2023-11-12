@@ -75,8 +75,57 @@ export const modal = function() {
         }
     }
 
+    const editModal = function (e){
+        const editContent = document.querySelector(".edit-form-content");
+        const editBtn = document.getElementById("edit-dialog");
+        editBtn.showModal(e);
+
+        const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
+        const clickedTask = changeCase(e.target.parentElement.parentElement.children[1].textContent, "lowercase");
+        const taskArr = allProjects[selectedTab][clickedTask];
+
+        let currTitle = document.getElementById("edit_title_field");
+        let currDesc = document.getElementById("edit_desc_field");
+        let currPriority = document.getElementById("edit_priority_select");
+        let currDate = document.getElementById("edit_date_field");
+        let currProject = document.getElementById("edit_project_field");
+        
+        // Provide live color feedback when edits are made
+        const changeColor = function (e) {
+            let editedValue = e.value;
+            if (editedValue === e){
+                e.style.color = "green";
+            } else {
+                e.style.color = "red";
+            }
+        }
+
+        for (let i = 0; i < taskArr.length; i++){
+            if (i === 0){
+                currTitle.value = `${taskArr[0]}`
+                // currTitle.addEventListener("input", changeColor(currTitle));
+            } else if (i === 1){
+                currDesc.value = `${taskArr[1]}`;
+                // currDesc.addEventListener("input", changeColor(currDesc));
+            } else if (i === 2){
+                currPriority.value = `${taskArr[2]}`;
+                // currPriority.addEventListener("input", changeColor(currPriority));
+            } else if (i === 3){
+                currDate.value = `${taskArr[3]}`;
+                // currDate.addEventListener("input", changeColor(currDate));
+            } else if (i === 4){
+                currProject.value = `${taskArr[4]}`;
+                // currProject.addEventListener("input", changeColor(currProject));
+            } 
+            else {
+                console.log("Task has too many values");
+            }
+        }
+    }
+
     modal.addTodoModal = addTodoModal;
     modal.infoModal = infoModal;
+    modal.editModal = editModal;
 
     return modal;
 }

@@ -81,6 +81,51 @@
         </dialog>
     </section>
 
+    <section class="edit-container">
+        <dialog class="nes-dialog is-rounded" id="edit-dialog">
+            <form method="dialog" class="edit-form">
+                <div class="edit-form-header">
+                    <h6 class="dialog-title edit-title">EDIT</h6>
+                </div>
+                <div class="edit-form-content">
+
+                    <div class="nes-field">
+                        <label for="edit_title_field"><span class="required-symbol">*</span>Title:</label>
+                        <input type="text" id="edit_title_field" class="nes-input" name="edit_title">
+                    </div>
+                
+                    <div>
+                        <label for="edit_desc_field">Description:</label>
+                        <textarea id="edit_desc_field" class="nes-textarea" name="edit_desc"></textarea>
+                    </div>
+    
+                    <label for="edit_priority_select">Priority:</label>
+                    <div class="nes-select">
+                        <select required id="edit_priority_select">
+                            <option value="low" selected>Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+    
+                    <div class="nes-field">
+                        <label for="edit_date_field">Due Date:</label>
+                        <input type="date" id="edit_date_field" class="nes-input" name="edit_date">
+                    </div>
+    
+                    <div class="nes-field">
+                        <label for="edit_project_field"><span class="required-symbol">*</span>Project:</label>
+                        <input type="text" id="edit_project_field" class="nes-input" placeholder="Home">
+                    </div>
+
+                </div>
+                <menu class="edit-dialog-menu">
+                    <button class="nes-btn" id="edit-cancel">Cancel</button>
+                    <button class="nes-btn is-primary" id="edit-confirm">Confirm</button>
+                </menu>
+            </form>
+        </dialog>
+    </section>
 
     <!-- Add TODO Dialog/Modal -->
     <section class="task-add-container">
