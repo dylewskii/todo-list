@@ -69,7 +69,16 @@ export const modal = function() {
             title.textContent = labels[i];
 
             const content = document.createElement("p");
-            content.textContent = `${taskArr[i]}`;
+            if (typeof(taskArr[i]) === "boolean"){
+                if (taskArr[i] === true){
+                    console.log()
+                    content.textContent = "Yes";
+                } else {
+                    content.textContent = "No";
+                }
+            } else {
+                content.textContent = `${taskArr[i]}`;
+            }
 
             infoContainer.appendChild(title);
             infoContainer.appendChild(content);
