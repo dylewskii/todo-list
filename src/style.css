@@ -75,6 +75,12 @@ body {
     outline: none;
 }
 
+.add-project-icon {
+    max-width: 37px;
+    max-height: 37px;
+    margin-bottom: 4px;
+}
+
 /* Tasks */
 .task {
     display: grid;

@@ -2,9 +2,12 @@ import { allProjects } from "../..";
 import { deleteTask } from "../tasks/deleteTask";
 import { changeCase } from "../misc/changeCase";
 import { modal } from "./modals";
+const folderImg = require("../../assets/images/new-folder.png");
+const activeFolderImg = require("../../assets/images/new-folder-active.png");
 
 export const render = function() {
     const controller = {};
+    const modalController = modal();
     const allProjectsArr = Object.keys(allProjects);
     const tabContainer = document.querySelector(".tab-container");
     const taskContainer = document.querySelector(".task-container");
@@ -20,6 +23,23 @@ export const render = function() {
             newTab.classList.add("tab-btn");
             newTab.setAttribute("data-for-tab", `${index + 1}`);
             tabContainer.appendChild(newTab);
+        })
+
+        const addProjectIcon = document.createElement("img");
+        addProjectIcon.src = folderImg;
+        addProjectIcon.alt = "Add Folder Icon";
+        addProjectIcon.classList.add("add-project-icon", "nes-pointer");
+        tabContainer.appendChild(addProjectIcon);
+
+        addProjectIcon.addEventListener("mouseenter", () => {
+            addProjectIcon.src = activeFolderImg;
+        })
+        addProjectIcon.addEventListener("mouseleave", () => {
+            addProjectIcon.src = folderImg;
+        })
+        
+        addProjectIcon.addEventListener("click", () => {
+            modalController.addProjectModal();
         })
     };
 
@@ -87,7 +107,6 @@ export const render = function() {
             infoBtn.id = "infoBtn";
             infoBtn.textContent = "Info";
             infoBtn.addEventListener("click", (e) => {
-                const modalController = modal();
                 modalController.infoModal(e);
             })
 
@@ -96,7 +115,6 @@ export const render = function() {
             editBtn.id = "editBtn";
             editBtn.textContent = "Edit";
             editBtn.addEventListener("click", (e) => {
-                const modalController = modal();
                 modalController.editModal(e);
             })
 

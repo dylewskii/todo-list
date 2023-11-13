@@ -7,6 +7,23 @@ import { changeCase } from "../misc/changeCase";
 export const modal = function() {
     const modal = {};
 
+    const addProjectModal = function () {
+        const addProjectDialog = document.getElementById("add-project-dialog");
+        const form = document.querySelector(".add-project-form");
+
+        addProjectDialog.showModal();
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            if (e.submitter.id === "add-project-cancel"){
+                addProjectDialog.close();
+                form.reset();
+                return;
+            }
+        })
+    }
+
     const addTodoModal = function (){
         const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
         const confirmBtn = document.getElementById("dialog-confirm");
@@ -172,6 +189,7 @@ export const modal = function() {
     modal.addTodoModal = addTodoModal;
     modal.infoModal = infoModal;
     modal.editModal = editModal;
+    modal.addProjectModal = addProjectModal;
 
     return modal;
 };

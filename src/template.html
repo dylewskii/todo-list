@@ -6,10 +6,12 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
+    <!-- Main Header -->
     <header class="header">
         <h1 class="header-title"><span class="pop">DO</span> 8B<span class="pop">IT NOW</span></h1>
     </header>
 
+    <!-- Task Counter Subheader -->
     <section class="subheader">
         <div class="task-count-container">
             <span id="task-count"></span>
@@ -17,29 +19,32 @@
         </div>
     </section>
     
+    <!-- Project/Task Content -->
     <div class="content">
-        <div class="tab-container">
-            <!-- <button class="tab-btn tab--active" data-for-tab="1">Home</button>
-            <button class="tab-btn" data-for-tab="2">Gym</button> -->
-        </div>
-
-        <div class="task-container">
-            <!-- <div class="task task--active" data-tab="1">
-                <label class="task__checkbox">
-                    <input type="checkbox" class="nes-checkbox checkbox" checked />
-                    <span></span>
-                </label>
-                <div class="task__title">
-                    <p>Walk</p>
-                </div>
-                <div class="task__controls">
-                    <button class="task-btn nes-btn" id="infoBtn">Info</button>
-                    <button class="task-btn nes-btn" id="editBtn">Edit</button>
-                    <button class="task-btn nes-btn is-error" id="deleteBtn">X</button>
-                </div>
-            </div> -->
-        </div>
+        <div class="tab-container"></div>
+        <div class="task-container"></div>
     </div>
+
+    <!-- Edit Dialog/Modal -->
+    <section class="add-project-container">
+        <dialog class="nes-dialog is-rounded" id="add-project-dialog">
+            <form method="dialog" class="add-project-form">
+                <div class="add-project-header">
+                    <h6 class="dialog-title add-project-title">Add Project</h6>
+                </div>
+                <div class="add-project-content">
+                    <div class="nes-field">
+                        <label for="add-project_field"><span class="required-symbol">*</span>Title:</label>
+                        <input type="text" id="add-project_field" class="nes-input" name="add-project_title">
+                    </div>
+                </div>
+                <menu class="add-project-menu">
+                    <button class="nes-btn" id="add-project-cancel">Cancel</button>
+                    <button class="nes-btn is-primary" id="add-project-confirm">Confirm</button>
+                </menu>
+            </form>
+        </dialog>
+    </section>
 
     <!-- Info Dialog/Modal -->
     <section class="info-container">
@@ -52,40 +57,11 @@
                     </menu>
                 </div>
                 <div class="info-form-content"></div>
-
-                <!-- <div class="nes-container is-rounded with-title">
-                    <p class="title">Title:</p>
-                    <p></p>
-                </div>
-
-                <div class="nes-container is-rounded with-title">
-                    <p class="title">Description:</p>
-                    <p></p>
-                </div>
-
-                <div class="nes-container is-rounded with-title">
-                    <p class="title">Priority:</p>
-                    <p></p>
-                </div>
-
-                <div class="nes-container is-rounded with-title">
-                    <p class="title">Due Date:</p>
-                    <p></p>
-                </div>
-
-                <div class="nes-container is-rounded with-title">
-                    <p class="title">Completed:</p>
-                    <p></p>
-                </div>
-
-                <div class="nes-container is-rounded with-title">
-                    <p class="title">Project:</p>
-                    <p></p>
-                </div> -->
             </form>
         </dialog>
     </section>
 
+    <!-- Edit Dialog/Modal -->
     <section class="edit-container">
         <dialog class="nes-dialog is-rounded" id="edit-dialog">
             <form method="dialog" class="edit-form">
