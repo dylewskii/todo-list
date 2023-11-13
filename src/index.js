@@ -37,7 +37,3 @@ document.addEventListener("DOMContentLoaded", () => {
     displayController.handleTabClick();
     modalController.addTodoModal();
 })
-
-// document.addEventListener("DOMContentLoaded", displayController.renderTabs());
-// document.addEventListener("DOMContentLoaded", displayController.handleTabClick());
-// document.addEventListener("DOMContentLoaded", modalController.addTodoModal());

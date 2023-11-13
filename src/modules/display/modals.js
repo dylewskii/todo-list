@@ -88,9 +88,10 @@ export const modal = function() {
     }
 
     const editModal = function (e){
-        // Provide live color feedback when edits are made
+        // NEED TO FIX -  Provide live color feedback when edits are made
         const changeColor = function (e) {
             let editedValue = e.value;
+            
             if (editedValue === e){
                 e.style.color = "green";
             } else {

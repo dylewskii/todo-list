@@ -20,7 +20,6 @@ export function editTask(ogProject, ogTitle, editedValues) {
     } else if (ogProject === editedProject && ogTitle === editedTitle){
         allProjects[ogProject][ogTitle] = editedValues;
         displayController.renderTasks();
-        console.log(allProjects)
     } else {
         console.log("unexpected outcome");
     }
