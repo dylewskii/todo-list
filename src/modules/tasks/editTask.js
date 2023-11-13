@@ -1,7 +1,9 @@
 import { allProjects } from "../..";
 import { addTask } from "./addTask";
+import { render } from "../display/render";
 
 export function editTask(ogProject, ogTitle, editedValues) {  
+    const displayController = render();
     const editedProject = editedValues[editedValues.length - 1];
     const editedTitle = editedValues[0];
 
@@ -17,6 +19,8 @@ export function editTask(ogProject, ogTitle, editedValues) {
     // Neither project/task edited?
     } else if (ogProject === editedProject && ogTitle === editedTitle){
         allProjects[ogProject][ogTitle] = editedValues;
+        displayController.renderTasks();
+        console.log(allProjects)
     } else {
         console.log("unexpected outcome");
     }

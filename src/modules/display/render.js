@@ -115,6 +115,7 @@ export const render = function() {
             taskControls.appendChild(deleteBtn);
 
             taskDiv.appendChild(taskControls);
+            taskCounter();
         })
     }
 

@@ -37,8 +37,7 @@ export const modal = function() {
             priority = priority || "low"; 
             dueDate = dueDate || "N/A";
             project = project || "home"; 
-            completed = completed || false;
-
+            completed = completed === "true" ? true : false;
             addTask(title, desc, priority, dueDate, completed, project);
 
             addTodoDialog.close();
@@ -138,12 +137,14 @@ export const modal = function() {
                 editForm.reset();
                 return;
             }
+            currCompleted = currCompleted.value === "true" ? true : false;
 
             let editedValues = [
                 currTitle.value,
                 currDesc.value,
                 currPriority.value,
                 currDate.value,
+                currCompleted,
                 currProject.value
             ];
             
