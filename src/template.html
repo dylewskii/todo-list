@@ -25,27 +25,6 @@
         <div class="task-container"></div>
     </div>
 
-    <!-- Edit Dialog/Modal -->
-    <section class="add-project-container">
-        <dialog class="nes-dialog is-rounded" id="add-project-dialog">
-            <form method="dialog" class="add-project-form">
-                <div class="add-project-header">
-                    <h6 class="dialog-title add-project-title">Add Project</h6>
-                </div>
-                <div class="add-project-content">
-                    <div class="nes-field">
-                        <label for="add-project_field"><span class="required-symbol">*</span>Title:</label>
-                        <input type="text" id="add-project_field" class="nes-input" name="add-project_title">
-                    </div>
-                </div>
-                <menu class="add-project-menu">
-                    <button class="nes-btn" id="add-project-cancel">Cancel</button>
-                    <button class="nes-btn is-primary" id="add-project-confirm">Confirm</button>
-                </menu>
-            </form>
-        </dialog>
-    </section>
-
     <!-- Info Dialog/Modal -->
     <section class="info-container">
         <dialog class="nes-dialog is-rounded" id="info-dialog">
@@ -116,58 +95,84 @@
         </dialog>
     </section>
 
-    <!-- Add TODO Dialog/Modal -->
-    <section class="task-add-container">
-        <button class="add-btn nes-btn is-primary" onclick="document.getElementById('add-todo-dialog').showModal();">+</button>
-        <dialog class="nes-dialog is-rounded" id="add-todo-dialog">
-            <form method="dialog" class="add-todo-form">
-                <div class="dialog-title-container">
-                    <h6 class="dialog-title add-todo-title">ADD A TODO</h6>
-                </div>
+    <div class="todo-controls">
+        <!-- Add Project Dialog/Modal -->
+        <section class="add-project-container">
+            <button class="add-project-btn"></button>
+            <dialog class="nes-dialog is-rounded" id="add-project-dialog">
+                <form method="dialog" class="add-project-form">
+                    <div class="add-project-header">
+                        <h6 class="dialog-title add-project-title">Add Project</h6>
+                    </div>
+                    <div class="add-project-content">
+                        <div class="nes-field">
+                            <label for="add-project_field"><span class="required-symbol">*</span>Title:</label>
+                            <input type="text" id="add-project_field" class="nes-input" name="add-project_title">
+                            <p class="warning-result"></p>
+                        </div>
+                    </div>
+                    <menu class="add-project-menu">
+                        <button class="nes-btn" id="add-project-cancel">Cancel</button>
+                        <button class="nes-btn is-primary" id="add-project-confirm">Confirm</button>
+                    </menu>
+                </form>
+            </dialog>
+        </section>
 
-                <div class="nes-field">
-                    <label for="title_field"><span class="required-symbol">*</span>Title:</label>
-                    <input type="text" id="title_field" class="nes-input" name="title">
-                </div>
-            
-                <div>
-                    <label for="desc_field">Description:</label>
-                    <textarea id="desc_field" class="nes-textarea" name="desc"></textarea>
-                </div>
+        <!-- Add TODO Dialog/Modal -->
+        <section class="task-add-container">
+            <button class="add-btn nes-btn is-primary" onclick="document.getElementById('add-todo-dialog').showModal();">+</button>
+            <dialog class="nes-dialog is-rounded" id="add-todo-dialog">
+                <form method="dialog" class="add-todo-form">
+                    <div class="dialog-title-container">
+                        <h6 class="dialog-title add-todo-title">ADD A TODO</h6>
+                    </div>
 
-                <label for="priority_select">Priority:</label>
-                <div class="nes-select">
-                    <select required id="priority_select">
-                        <option value="low" selected>Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
-                    </select>
-                </div>
+                    <div class="nes-field">
+                        <label for="title_field"><span class="required-symbol">*</span>Title:</label>
+                        <input type="text" id="title_field" class="nes-input" name="title">
+                    </div>
+                
+                    <div>
+                        <label for="desc_field">Description:</label>
+                        <textarea id="desc_field" class="nes-textarea" name="desc"></textarea>
+                    </div>
 
-                <div class="nes-field">
-                    <label for="date_field">Due Date:</label>
-                    <input type="date" id="date_field" class="nes-input" name="date">
-                </div>
+                    <label for="priority_select">Priority:</label>
+                    <div class="nes-select">
+                        <select required id="priority_select">
+                            <option value="low" selected>Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
 
-                <label for="completed_select">Completed:</label>
-                <div class="nes-select">
-                    <select required id="completed_select">
-                        <option value="false" selected>No</option>
-                        <option value="true">Yes</option>
-                    </select>
-                </div>
+                    <div class="nes-field">
+                        <label for="date_field">Due Date:</label>
+                        <input type="date" id="date_field" class="nes-input" name="date">
+                    </div>
 
-                <div class="nes-field">
-                    <label for="project_field"><span class="required-symbol">*</span>Project:</label>
-                    <input type="text" id="project_field" class="nes-input" placeholder="Home">
-                </div>
+                    <label for="completed_select">Completed:</label>
+                    <div class="nes-select">
+                        <select required id="completed_select">
+                            <option value="false" selected>No</option>
+                            <option value="true">Yes</option>
+                        </select>
+                    </div>
 
-                <menu class="dialog-menu">
-                    <button class="nes-btn" id="dialog-cancel">Cancel</button>
-                    <button class="nes-btn is-primary" id="dialog-confirm">Confirm</button>
-                </menu>
-            </form>
-        </dialog>
-    </section>
+                    <div class="nes-field">
+                        <label for="project_field"><span class="required-symbol">*</span>Project:</label>
+                        <input type="text" id="project_field" class="nes-input" placeholder="Home">
+                    </div>
+
+                    <menu class="dialog-menu">
+                        <button class="nes-btn" id="dialog-cancel">Cancel</button>
+                        <button class="nes-btn is-primary" id="dialog-confirm">Confirm</button>
+                    </menu>
+                </form>
+            </dialog>
+        </section>
+    </div>
+
 </body>
 </html>

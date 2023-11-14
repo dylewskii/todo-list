@@ -33,7 +33,7 @@ const displayController = render();
 const modalController = modal();
 
 document.addEventListener("DOMContentLoaded", () => {
-    displayController.renderTabs();
+    displayController.renderProjects();
     displayController.handleTabClick();
     modalController.addTodoModal();
 })

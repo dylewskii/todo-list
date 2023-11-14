@@ -3,44 +3,56 @@ import { addTask } from "../tasks/addTask";
 import { editTask } from "../tasks/editTask";
 import { render } from "./render";
 import { changeCase } from "../misc/changeCase";
-
+import { addProject } from "../projects/addProject";
+    
 export const modal = function() {
     const modal = {};
 
     const addProjectModal = function () {
         const addProjectDialog = document.getElementById("add-project-dialog");
         const form = document.querySelector(".add-project-form");
-
         addProjectDialog.showModal();
 
         form.addEventListener("submit", (e) => {
             e.preventDefault();
+            const warning = document.querySelector(".warning-result");
 
+            // Close & Reset form, if cancel btn pressed
             if (e.submitter.id === "add-project-cancel"){
                 addProjectDialog.close();
                 form.reset();
                 return;
+            // Obtain title value & add project, if confirm btn pressed
+            } else {
+                let title = document.getElementById("add-project_field").value;
+                const addedProject = addProject(title);
+                if (!addedProject){
+                    warning.textContent = "Project Name Taken";
+                } else {
+                    warning.textContent = "";
+                    addProjectDialog.close();
+                    form.reset();
+                    console.log(allProjects)
+                }
             }
         })
     }
 
     const addTodoModal = function (){
-        const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
-        const confirmBtn = document.getElementById("dialog-confirm");
-        const cancelBtn = document.getElementById("dialog-cancel");
-
         const addTodoDialog = document.getElementById("add-todo-dialog");
         const form = document.querySelector(".add-todo-form");
 
         form.addEventListener("submit", (e) => {
             e.preventDefault();
 
+            // Close & Reset form if cancel button pressed
             if (e.submitter.id === "dialog-cancel"){
                 addTodoDialog.close();
                 form.reset();
                 return;
             }
 
+            // Task Values
             let title = document.getElementById("title_field").value;
             let desc = document.getElementById("desc_field").value;
             let priority = document.getElementById("priority_select").value;
@@ -180,7 +192,7 @@ export const modal = function() {
 
             editTask(ogProject, ogTitle, editedValues);
 
-            const displayController = render();
+            const displayController = render()
             displayController.renderTasks();
             editDialog.close()
         })

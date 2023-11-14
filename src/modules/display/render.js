@@ -12,7 +12,7 @@ export const render = function() {
     const tabContainer = document.querySelector(".tab-container");
     const taskContainer = document.querySelector(".task-container");
 
-    const renderTabs = function() {
+    const renderProjects = function() {
         while (tabContainer.firstChild) {
             tabContainer.removeChild(tabContainer.firstChild);
         }
@@ -25,20 +25,21 @@ export const render = function() {
             tabContainer.appendChild(newTab);
         })
 
+        const addProjectBtn = document.querySelector(".add-project-btn");
         const addProjectIcon = document.createElement("img");
         addProjectIcon.src = folderImg;
-        addProjectIcon.alt = "Add Folder Icon";
+        addProjectIcon.alt = "add folder image"
         addProjectIcon.classList.add("add-project-icon", "nes-pointer");
-        tabContainer.appendChild(addProjectIcon);
+        addProjectBtn.appendChild(addProjectIcon);
 
-        addProjectIcon.addEventListener("mouseenter", () => {
+        addProjectBtn.addEventListener("mouseenter", () => {
             addProjectIcon.src = activeFolderImg;
         })
-        addProjectIcon.addEventListener("mouseleave", () => {
+        addProjectBtn.addEventListener("mouseleave", () => {
             addProjectIcon.src = folderImg;
         })
         
-        addProjectIcon.addEventListener("click", () => {
+        addProjectBtn.addEventListener("click", () => {
             modalController.addProjectModal();
         })
     };
@@ -176,7 +177,7 @@ export const render = function() {
         taskCount.nextElementSibling.textContent = `task${plural} left today`;
     }
 
-    controller.renderTabs = renderTabs;
+    controller.renderProjects = renderProjects;
     controller.renderTasks = renderTasks;
     controller.handleTabClick = handleTabClick;
 

@@ -1,10 +1,15 @@
 import { allProjects } from "../..";
+import { render } from "../display/render";
 
 export function addProject(projectName) {
     if (allProjects.hasOwnProperty(projectName)){
-        console.log("project name taken")
-        return
+        return false;
     } else {
-        allProjects[projectName] = [];
+        allProjects[projectName] = {};
+        const displayController = render()
+        // displayController.renderProjects();
+        // displayController.handleTabClick();
+        // displayController.renderTasks();
+        return true;
     }
 }

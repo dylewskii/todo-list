@@ -75,12 +75,6 @@ body {
     outline: none;
 }
 
-.add-project-icon {
-    max-width: 37px;
-    max-height: 37px;
-    margin-bottom: 4px;
-}
-
 /* Tasks */
 .task {
     display: grid;
@@ -125,19 +119,36 @@ body {
     font-size: 0.5rem;
 }
 
-/* Task Add */
+/* Todo Controls */
 
-.task-add-container {
+.todo-controls {
     grid-row: 4;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    padding-right: 40px;
+    margin: 0 40px;
+}
+
+.add-project-btn, .add-project-icon {
+    max-width: 80px;
+    max-height: 80px;
+    padding: 0;
+    border: none;
+    background-color: white;
+}
+
+.add-project-btn:focus {
+    outline: none;
 }
 
 .add-btn {
     width: 70px;
     height: 70px;
+}
+
+.warning-result {
+    color: red;
+    font-size: 0.6rem;
 }
 
 /* --- Dialogs/Modals --- */
@@ -185,7 +196,6 @@ form label {
         width: 90%;
     }
 }
-
 
 @media (min-width: 430px){
     .task {
