@@ -12,6 +12,18 @@ export const render = function() {
     const tabContainer = document.querySelector(".tab-container");
     const taskContainer = document.querySelector(".task-container");
 
+    const taskCounter = function(){
+        const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
+        const taskCount = document.getElementById("task-count");
+        const currTasks = Object.keys(allProjects[selectedTab]);
+        let tasksLeft = currTasks.filter(task => !allProjects[selectedTab][task][4]);
+        
+        // if only 1 task left, change from plural
+        const plural = tasksLeft.length === 1 ? "" : "s";
+        taskCount.textContent = tasksLeft.length;
+        taskCount.nextElementSibling.textContent = `task${plural} left today`;
+    }
+
     const renderProjects = function() {
         while (tabContainer.firstChild) {
             tabContainer.removeChild(tabContainer.firstChild);
@@ -23,24 +35,6 @@ export const render = function() {
             newTab.classList.add("tab-btn");
             newTab.setAttribute("data-for-tab", `${index + 1}`);
             tabContainer.appendChild(newTab);
-        })
-
-        const addProjectBtn = document.querySelector(".add-project-btn");
-        const addProjectIcon = document.createElement("img");
-        addProjectIcon.src = folderImg;
-        addProjectIcon.alt = "add folder image"
-        addProjectIcon.classList.add("add-project-icon", "nes-pointer");
-        addProjectBtn.appendChild(addProjectIcon);
-
-        addProjectBtn.addEventListener("mouseenter", () => {
-            addProjectIcon.src = activeFolderImg;
-        })
-        addProjectBtn.addEventListener("mouseleave", () => {
-            addProjectIcon.src = folderImg;
-        })
-        
-        addProjectBtn.addEventListener("click", () => {
-            modalController.addProjectModal();
         })
     };
 
@@ -165,21 +159,30 @@ export const render = function() {
         selectedTabButton.click();
     }
 
-    const taskCounter = function(){
-        const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
-        const taskCount = document.getElementById("task-count");
-        const currTasks = Object.keys(allProjects[selectedTab]);
-        let tasksLeft = currTasks.filter(task => !allProjects[selectedTab][task][4]);
+    const renderControls = function() {
+        const addProjectBtn = document.querySelector(".add-project-btn");
+        const addProjectIcon = document.createElement("img");
+        addProjectIcon.src = folderImg;
+        addProjectIcon.alt = "add folder image"
+        addProjectIcon.classList.add("add-project-icon", "nes-pointer");
+        addProjectBtn.appendChild(addProjectIcon);
+
+        addProjectBtn.addEventListener("mouseenter", () => {
+            addProjectIcon.src = activeFolderImg;
+        })
+        addProjectBtn.addEventListener("mouseleave", () => {
+            addProjectIcon.src = folderImg;
+        })
         
-        // if only 1 task left, change from plural
-        const plural = tasksLeft.length === 1 ? "" : "s";
-        taskCount.textContent = tasksLeft.length;
-        taskCount.nextElementSibling.textContent = `task${plural} left today`;
+        addProjectBtn.addEventListener("click", () => {
+            modalController.addProjectModal();
+        })
     }
 
     controller.renderProjects = renderProjects;
     controller.renderTasks = renderTasks;
     controller.handleTabClick = handleTabClick;
+    controller.renderControls = renderControls;
 
     return controller;
 };

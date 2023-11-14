@@ -1,15 +1,18 @@
 import { allProjects } from "../..";
 import { render } from "../display/render";
+import { modal } from "../display/modals";
 
 export function addProject(projectName) {
     if (allProjects.hasOwnProperty(projectName)){
         return false;
     } else {
         allProjects[projectName] = {};
+        
         const displayController = render()
-        // displayController.renderProjects();
-        // displayController.handleTabClick();
-        // displayController.renderTasks();
+        const modalController = modal();
+        displayController.renderProjects();
+        displayController.handleTabClick();
+        modalController.addTodoModal();
         return true;
     }
 }
