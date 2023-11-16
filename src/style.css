@@ -18,16 +18,20 @@ body {
 
 .header {
     background-color: #87ccf8;
+    background-image: url(./assets/images/pixel-art-header.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 50%;
     width: 100%;
     grid-row: 1;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     padding-left: 20px;
     font-family: "8bit";
 }
 
 .header-title {
-    color: red;
+    color: #1E9CED;
 }
 
 .pop {
@@ -35,7 +39,9 @@ body {
 }
 
 .subheader {
-    background-color: rgb(163, 163, 163);
+    /* background-color: rgb(163, 163, 163); */
+    background-color: rgb(255,248,199);
+    /* CREAM = rgb(255,248,199) */
     width: 100%;
     grid-row: 2;
     display: flex;
@@ -53,17 +59,19 @@ body {
     margin-right: 5px;
 }
 
+/* Main Content */
+
 .content {
     grid-row: 3;
     width: 100%;
     display: grid;
-    grid-template-rows: 50px;
+    grid-template-rows: 75px auto;
     grid-auto-rows: 50px;
     row-gap: 15px;
     flex-direction: column;
     padding: 50px 20px;
     overflow-x: hidden;
-    background-color: grey;
+    background-color: white;
 }
 
 .tab--active {
@@ -75,19 +83,26 @@ body {
     outline: none;
 }
 
+.tab-container {
+
+}
+
 /* Tasks */
 .task {
     display: grid;
     width: 85%;
+    min-height: 50px;
     grid-template-columns: 10% 40% 50%;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 15px;
     font-size: 0.8rem;
     background-color: white;
 }
 
 .task--completed {
-    background-color: green;
+    background-color: rgb(105,183,104);
+    /* DARK GREEN = rgb(13,131,62) OR #0D833E*/
+    /* LIGHT GREEN = rgb(105,183,104) OR #69B768 */
 }
 
 .task__checkbox {
@@ -149,6 +164,7 @@ body {
 .warning-result {
     color: red;
     font-size: 0.6rem;
+    padding: 10px 0 0 90px;
 }
 
 /* --- Dialogs/Modals --- */
