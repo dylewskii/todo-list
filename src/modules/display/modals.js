@@ -4,6 +4,7 @@ import { editTask } from "../tasks/editTask";
 import { render } from "./render";
 import { changeCase } from "../misc/changeCase";
 import { addProject } from "../projects/addProject";
+import { deleteProject } from "../projects/deleteProject";
     
 export const modal = function() {
     const modal = {};
@@ -39,6 +40,52 @@ export const modal = function() {
                     form.reset();
                 } else {
                     console.log("uh oh ")
+                }
+            }
+        })
+    }
+
+    const projectManagerModal = function () {
+        const projectManagerDialog = document.getElementById("project-manager-dialog");
+        const pmSelect = document.getElementById("project-manager-target_select");
+        const allProjectsArr = Object.keys(allProjects);
+        const form = document.querySelector(".project-manager-form");
+
+        while (pmSelect.firstChild) {
+            pmSelect.removeChild(pmSelect.firstChild);
+        }
+
+        projectManagerDialog.showModal();
+
+
+        const warning = document.querySelector(".warning-result");
+
+        allProjectsArr.forEach(proj => {
+            const option = document.createElement("option");
+            option.value = proj;
+            option.textContent = proj;
+            pmSelect.appendChild(option);
+        })
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            // Close & Reset form, if cancel btn pressed
+            if (e.submitter.id === "project-manager-cancel"){
+                form.reset();
+                projectManagerDialog.close();
+                return;
+            } else {
+                const pmOption = document.getElementById("project-manager-option_select").value;
+                const pmTarget = document.getElementById("project-manager-target_select").value;
+                if (pmOption === "delete"){
+                    deleteProject(pmTarget);
+                    form.reset();
+                    projectManagerDialog.close();
+                    console.log(allProjects)
+                    console.log("project deleted")
+                } else if (pmOption === "edit"){
+                    console.log("editing")
                 }
             }
         })
@@ -205,6 +252,7 @@ export const modal = function() {
     }
 
     modal.addProjectModal = addProjectModal;
+    modal.projectManagerModal = projectManagerModal;
     modal.addTodoModal = addTodoModal;
     modal.infoModal = infoModal;
     modal.editModal = editModal;

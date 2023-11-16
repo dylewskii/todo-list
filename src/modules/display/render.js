@@ -2,8 +2,12 @@ import { allProjects } from "../..";
 import { deleteTask } from "../tasks/deleteTask";
 import { changeCase } from "../misc/changeCase";
 import { modal } from "./modals";
-const folderImg = require("../../assets/images/new-folder.png");
-const activeFolderImg = require("../../assets/images/new-folder-active.png");
+
+const folderImg = require("../../assets/images/folder.png");
+const folderImgActive = require("../../assets/images/folder-active.png")
+
+const addFolderImg = require("../../assets/images/new-folder.png");
+const addFolderImgActive = require("../../assets/images/new-folder-active.png");
 
 export const render = function() {
     const controller = {};
@@ -35,6 +39,27 @@ export const render = function() {
             newTab.classList.add("tab-btn");
             newTab.setAttribute("data-for-tab", `${index + 1}`);
             tabContainer.appendChild(newTab);
+        })
+
+        const addProjectBtn = document.createElement("button");
+        addProjectBtn.classList.add("add-project-btn");
+        tabContainer.appendChild(addProjectBtn);
+
+        const addProjectIcon = document.createElement("img");
+        addProjectIcon.src = addFolderImg;
+        addProjectIcon.alt = "add folder image"
+        addProjectIcon.classList.add("add-project-icon", "nes-pointer");
+        addProjectBtn.appendChild(addProjectIcon);
+
+        addProjectBtn.addEventListener("mouseenter", () => {
+            addProjectIcon.src = addFolderImgActive;
+        })
+        addProjectBtn.addEventListener("mouseleave", () => {
+            addProjectIcon.src = addFolderImg;
+        })
+        
+        addProjectBtn.addEventListener("click", () => {
+            modalController.addProjectModal();
         })
     };
 
@@ -161,22 +186,22 @@ export const render = function() {
     }
 
     const renderControls = function() {
-        const addProjectBtn = document.querySelector(".add-project-btn");
-        const addProjectIcon = document.createElement("img");
-        addProjectIcon.src = folderImg;
-        addProjectIcon.alt = "add folder image"
-        addProjectIcon.classList.add("add-project-icon", "nes-pointer");
-        addProjectBtn.appendChild(addProjectIcon);
+        const projectManagerBtn = document.querySelector(".project-manager-btn");
+        const projectManagerIcon = document.createElement("img");
+        projectManagerIcon.src = folderImg;
+        projectManagerIcon.alt = "add folder image"
+        projectManagerIcon.classList.add("project-manager-icon", "nes-pointer");
+        projectManagerBtn.appendChild(projectManagerIcon);
 
-        addProjectBtn.addEventListener("mouseenter", () => {
-            addProjectIcon.src = activeFolderImg;
+        projectManagerBtn.addEventListener("mouseenter", () => {
+            projectManagerIcon.src = folderImgActive;
         })
-        addProjectBtn.addEventListener("mouseleave", () => {
-            addProjectIcon.src = folderImg;
+        projectManagerBtn.addEventListener("mouseleave", () => {
+            projectManagerIcon.src = folderImg;
         })
         
-        addProjectBtn.addEventListener("click", () => {
-            modalController.addProjectModal();
+        projectManagerBtn.addEventListener("click", () => {
+            modalController.projectManagerModal();
         })
     }
 

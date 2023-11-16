@@ -83,9 +83,32 @@ body {
     outline: none;
 }
 
-.tab-container {
-
+.project-manager-btn, .project-manager-icon {
+    max-width: 80px;
+    max-height: 80px;
+    border: none;
+    background-color: white;
 }
+
+.project-manager-btn:focus {
+    outline: none;
+}
+
+.add-project-btn, .add-project-icon {
+    max-width: 40px;
+    max-height: 40px;
+    padding-bottom: 4px;
+    border: none;
+    background-color: white;
+}
+
+.add-project-btn:focus {
+    outline: none;
+}
+
+/* .tab-container {
+
+} */
 
 /* Tasks */
 .task {
@@ -142,18 +165,6 @@ body {
     justify-content: space-between;
     align-items: center;
     margin: 0 40px;
-}
-
-.add-project-btn, .add-project-icon {
-    max-width: 80px;
-    max-height: 80px;
-    padding: 0;
-    border: none;
-    background-color: white;
-}
-
-.add-project-btn:focus {
-    outline: none;
 }
 
 .add-btn {

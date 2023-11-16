@@ -25,7 +25,29 @@
         <div class="task-container"></div>
     </div>
 
-    <!-- Info Dialog/Modal -->
+    <!-- Add Project Modal -->
+    <section class="add-project-container">
+        <dialog class="nes-dialog is-rounded" id="add-project-dialog">
+            <form method="dialog" class="add-project-form">
+                <div class="add-project-header">
+                    <h6 class="dialog-title add-project-title">Add A Project</h6>
+                </div>
+                <div class="add-project-content">
+                    <div class="nes-field">
+                        <label for="add-project_field" required><span class="required-symbol">*</span>Title:</label>
+                        <input type="text" id="add-project_field" class="nes-input" name="add-project_field">
+                        <p class="warning-result"></p>
+                    </div>
+                </div>
+                <menu class="add-project-menu">
+                    <button class="nes-btn" id="add-project-cancel">Cancel</button>
+                    <button class="nes-btn is-primary" id="add-project-confirm">Confirm</button>
+                </menu>
+            </form>
+        </dialog>
+    </section>
+
+    <!-- Info Modal -->
     <section class="info-container">
         <dialog class="nes-dialog is-rounded" id="info-dialog">
             <form method="dialog" class="info-form">
@@ -40,7 +62,7 @@
         </dialog>
     </section>
 
-    <!-- Edit Dialog/Modal -->
+    <!-- Edit Modal -->
     <section class="edit-container">
         <dialog class="nes-dialog is-rounded" id="edit-dialog">
             <form method="dialog" class="edit-form">
@@ -96,24 +118,30 @@
     </section>
 
     <div class="todo-controls">
-        <!-- Add Project Dialog/Modal -->
-        <section class="add-project-container">
-            <button class="add-project-btn"></button>
-            <dialog class="nes-dialog is-rounded" id="add-project-dialog">
-                <form method="dialog" class="add-project-form">
-                    <div class="add-project-header">
-                        <h6 class="dialog-title add-project-title">Add A Project</h6>
+        <!-- Project Manager Modal -->
+        <section class="project-manager-container">
+            <button class="project-manager-btn"></button>
+            <dialog class="nes-dialog is-rounded" id="project-manager-dialog">
+                <form method="dialog" class="project-manager-form">
+                    <div class="project-manager-header">
+                        <h6 class="dialog-title project-manager-title">Project Manager:</h6>
                     </div>
-                    <div class="add-project-content">
-                        <div class="nes-field">
-                            <label for="add-project_field" required><span class="required-symbol">*</span>Title:</label>
-                            <input type="text" id="add-project_field" class="nes-input" name="add-project_field">
-                            <p class="warning-result"></p>
+                    <div class="project-manager-content">
+                        <label for="project-manager-option_select">Delete or Edit a Project?</label>
+                        <div class="nes-select">
+                            <select required id="project-manager-option_select">
+                                <option value="delete" selected>Delete</option>
+                                <option value="edit">Edit</option>
+                            </select>
+                        </div>
+                        <label for="project-manager-target_select">Select the project:</label>
+                        <div class="nes-select">
+                            <select id="project-manager-target_select"></select>
                         </div>
                     </div>
-                    <menu class="add-project-menu">
-                        <button class="nes-btn" id="add-project-cancel">Cancel</button>
-                        <button class="nes-btn is-primary" id="add-project-confirm">Confirm</button>
+                    <menu class="project-manager-menu">
+                        <button class="nes-btn" id="project-manager-cancel">Cancel</button>
+                        <button class="nes-btn is-primary" id="project-manager-confirm">Confirm</button>
                     </menu>
                 </form>
             </dialog>
