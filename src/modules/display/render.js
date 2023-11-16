@@ -132,15 +132,16 @@ export const render = function() {
         })
     }
 
-    const handleTabClick = function(initialTab) {
+    const handleTabClick = function() {
         const tabBtns = document.querySelectorAll(".tab-btn");
-        let selectedTab;
+        let selectedTab = tabBtns[0].textContent.toLowerCase();
+        // let selectedTab;
 
-        if (initialTab) {
-            selectedTab = initialTab;
-        } else {
-            selectedTab = tabBtns[0].textContent.toLowerCase();
-        }
+        // if (initialTab) {
+        //     selectedTab = initialTab;
+        // } else {
+        //     selectedTab = tabBtns[0].textContent.toLowerCase();
+        // }
 
         tabBtns.forEach(btn => {
             btn.addEventListener("click", (e) => { 

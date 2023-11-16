@@ -23,16 +23,22 @@ export const modal = function() {
                 form.reset();
                 return;
             // Obtain title value & add project, if confirm btn pressed
-            } else {
-                let title = document.getElementById("add-project_field").value;
-                const addedProject = addProject(title);
+            } else if (e.submitter.id === "add-project-confirm"){
+                const title = document.getElementById("add-project_field").value;
+                if (title === ""){
+                    console.log("project title can't be empty");
+                    return;
+                }
+                let addedProject = addProject(title);
                 if (!addedProject){
+                    form.reset();
                     warning.textContent = "Project Name Taken";
-                } else {
+                } else if (addedProject) {
                     warning.textContent = "";
                     addProjectDialog.close();
                     form.reset();
-                    console.log(allProjects)
+                } else {
+                    console.log("uh oh ")
                 }
             }
         })
@@ -198,10 +204,10 @@ export const modal = function() {
         })
     }
 
+    modal.addProjectModal = addProjectModal;
     modal.addTodoModal = addTodoModal;
     modal.infoModal = infoModal;
     modal.editModal = editModal;
-    modal.addProjectModal = addProjectModal;
 
     return modal;
 };
