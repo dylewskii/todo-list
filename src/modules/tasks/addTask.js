@@ -13,7 +13,5 @@ export function addTask(title, description="N/A", priority="low", dueDate="N/A",
 
     const taskValues = Object.values(task);
     allProjects[task.project][task.title] = taskValues;
-
-    const displayController = render();
-    displayController.renderTasks();
+    console.log("task added");
 }

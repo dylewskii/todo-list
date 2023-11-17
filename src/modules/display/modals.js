@@ -18,15 +18,16 @@ export const modal = function() {
             e.preventDefault();
             const warning = document.querySelector(".warning-result");
 
-            // Close & Reset form, if cancel btn pressed
+            // If Cancel - Close & Reset form, if cancel btn pressed
             if (e.submitter.id === "add-project-cancel"){
                 addProjectDialog.close();
                 form.reset();
                 return;
-            // Obtain title value & add project, if confirm btn pressed
+            // If Confirm - Obtain title value & add project
             } else if (e.submitter.id === "add-project-confirm"){
                 const title = document.getElementById("add-project_field").value;
                 if (title === ""){
+                    // Being called twice??
                     console.log("project title can't be empty");
                     return;
                 }
@@ -46,19 +47,17 @@ export const modal = function() {
     }
 
     const projectManagerModal = function () {
+        const displayController = render();
         const projectManagerDialog = document.getElementById("project-manager-dialog");
         const pmSelect = document.getElementById("project-manager-target_select");
-        const allProjectsArr = Object.keys(allProjects);
         const form = document.querySelector(".project-manager-form");
+        const allProjectsArr = Object.keys(allProjects);
 
         while (pmSelect.firstChild) {
             pmSelect.removeChild(pmSelect.firstChild);
         }
 
         projectManagerDialog.showModal();
-
-
-        const warning = document.querySelector(".warning-result");
 
         allProjectsArr.forEach(proj => {
             const option = document.createElement("option");
@@ -77,13 +76,12 @@ export const modal = function() {
                 return;
             } else {
                 const pmOption = document.getElementById("project-manager-option_select").value;
-                const pmTarget = document.getElementById("project-manager-target_select").value;
                 if (pmOption === "delete"){
+                    const pmTarget = document.getElementById("project-manager-target_select").value;
+                    console.log(`You are trying to delete ${pmTarget}`)
                     deleteProject(pmTarget);
                     form.reset();
                     projectManagerDialog.close();
-                    console.log(allProjects)
-                    console.log("project deleted")
                 } else if (pmOption === "edit"){
                     console.log("editing")
                 }
@@ -110,11 +108,18 @@ export const modal = function() {
             let desc = document.getElementById("desc_field").value;
             let priority = document.getElementById("priority_select").value;
             let dueDate = document.getElementById("date_field").value;
-            let project = document.getElementById("project_field").value;
             let completed = document.getElementById("completed_select").value;
+            let project = document.getElementById("project_field").value;
+
+            if (title === "" || title === undefined){
+                addTodoDialog.close();
+                form.reset();  
+                console.log("can't add empty task")
+                return;
+            }
 
             // If undefined value provided, set a string value.
-            title = title || "N/A"; 
+            // title = title || "N/A"; 
             desc = desc || "N/A"; 
             priority = priority || "low"; 
             dueDate = dueDate || "N/A";
@@ -123,7 +128,9 @@ export const modal = function() {
             addTask(title, desc, priority, dueDate, completed, project);
 
             addTodoDialog.close();
-            form.reset();  
+            form.reset();
+            const displayController = render();
+            displayController.renderTasks();
         })
     }
 
