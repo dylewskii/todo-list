@@ -43,7 +43,7 @@ export const modal = function() {
                     console.log("uh oh ")
                 }
             }
-        })
+        }, { once : true })
     }
 
     const projectManagerModal = function () {
@@ -86,7 +86,7 @@ export const modal = function() {
                     console.log("editing")
                 }
             }
-        })
+        }, { once : true})
     }
 
     const addTodoModal = function (){
