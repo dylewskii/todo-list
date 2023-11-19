@@ -7,7 +7,7 @@ import { addProject } from "../projects/addProject";
 import { deleteProject } from "../projects/deleteProject";
     
 export const modal = function() {
-    const modal = {};
+    const controller = {};
 
     // Creates an Add Project Modal
     const addProjectModal = function () {
@@ -349,11 +349,11 @@ export const modal = function() {
         })
     }
 
-    modal.addProjectModal = addProjectModal;
-    modal.projectManagerModal = projectManagerModal;
-    modal.addTodoModal = addTodoModal;
-    modal.infoModal = infoModal;
-    modal.editModal = editModal;
+    controller.addProjectModal = addProjectModal;
+    controller.projectManagerModal = projectManagerModal;
+    controller.addTodoModal = addTodoModal;
+    controller.infoModal = infoModal;
+    controller.editModal = editModal;
 
-    return modal;
+    return controller;
 };
