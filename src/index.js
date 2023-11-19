@@ -26,6 +26,11 @@ export const allProjects = {
     }
 };
 
+// Function to save data to localStorage
+function saveToLocalStorage() {
+    localStorage.setItem('allProjects', JSON.stringify(allProjects));
+  }
+
 const displayController = render();
 const modalController = modal();
 
