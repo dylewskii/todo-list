@@ -9,41 +9,87 @@ import { deleteProject } from "../projects/deleteProject";
 export const modal = function() {
     const modal = {};
 
+    // Creates an Add Project Modal
     const addProjectModal = function () {
-        const addProjectDialog = document.getElementById("add-project-dialog");
-        const form = document.querySelector(".add-project-form");
-        addProjectDialog.showModal();
-
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const warning = document.querySelector(".warning-result");
-
-            // If Cancel - Close & Reset form, if cancel btn pressed
-            if (e.submitter.id === "add-project-cancel"){
-                addProjectDialog.close();
-                form.reset();
-                return;
-            // If Confirm - Obtain title value & add project
-            } else if (e.submitter.id === "add-project-confirm"){
-                const title = document.getElementById("add-project_field").value;
-                if (title === ""){
-                    // Being called twice??
-                    console.log("project title can't be empty");
-                    return;
-                }
-                let addedProject = addProject(title);
-                if (!addedProject){
-                    form.reset();
-                    warning.textContent = "Project Name Taken";
-                } else if (addedProject) {
-                    warning.textContent = "";
-                    addProjectDialog.close();
-                    form.reset();
-                } else {
-                    console.log("uh oh ")
-                }
-            }
-        }, { once : true })
+        const addProjectContainer = document.querySelector(".add-project-container");
+ 
+        while (addProjectContainer.firstChild) {
+            addProjectContainer.removeChild(addProjectContainer.firstChild);
+        }
+ 
+        // Dialog
+        const addProjectDialog = document.createElement("dialog");
+        addProjectDialog.classList.add("nes-dialog", "is-rounded");
+        addProjectDialog.id = "add-project-dialog";
+ 
+        // Form
+        const form = document.createElement("form");
+        form.method = "dialog";
+        form.classList.add("add-project-form");
+ 
+        // add-project-header
+        const addProjectHeader = document.createElement("div");
+        addProjectHeader.classList.add("add-project-header");
+ 
+        const dialogTitle = document.createElement("h6");
+        dialogTitle.classList.add("dialog-title", "add-project-title");
+        dialogTitle.textContent = "Add A Project";
+ 
+        addProjectHeader.appendChild(dialogTitle);
+ 
+        // add-project-content
+        const addProjectContent = document.createElement("div");
+        addProjectContent.classList.add("add-project-content");
+ 
+        const nesField = document.createElement("div");
+        nesField.classList.add("nes-field");
+ 
+        const label = document.createElement("label");
+        label.htmlFor = "add-project_field";
+        label.innerHTML = '<span class="required-symbol">*</span>Title:';
+ 
+        const input = document.createElement("input");
+        input.type = "text";
+        input.id = "add-project_field";
+        input.classList.add("nes-input");
+        input.name = "add-project_field";
+ 
+        const warningResult = document.createElement("p");
+        warningResult.classList.add("warning-result");
+ 
+        nesField.appendChild(label);
+        nesField.appendChild(input);
+        nesField.appendChild(warningResult);
+ 
+        addProjectContent.appendChild(nesField);
+ 
+        // add-project-menu
+        const addProjectMenu = document.createElement("menu");
+        addProjectMenu.classList.add("add-project-menu");
+ 
+        const cancelButton = document.createElement("button");
+        cancelButton.classList.add("nes-btn");
+        cancelButton.id = "add-project-cancel";
+        cancelButton.textContent = "Cancel";
+ 
+        const confirmButton = document.createElement("button");
+        confirmButton.classList.add("nes-btn", "is-primary");
+        confirmButton.id = "add-project-confirm";
+        confirmButton.textContent = "Confirm";
+ 
+        addProjectMenu.appendChild(cancelButton);
+        addProjectMenu.appendChild(confirmButton);
+ 
+        form.appendChild(addProjectHeader);
+        form.appendChild(addProjectContent);
+        form.appendChild(addProjectMenu);
+ 
+        // Append form to dialog
+        addProjectDialog.appendChild(form);
+ 
+        // Append dialog to add-project-container
+        addProjectContainer.appendChild(addProjectDialog);
+ 
     }
 
     const projectManagerModal = function () {

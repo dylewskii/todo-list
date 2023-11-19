@@ -12,7 +12,6 @@ export function addProject(projectName) {
         const displayController = render()
         const modalController = modal();
         displayController.renderProjects();
-        displayController.handleTabClick();
         modalController.addTodoModal();
         return true;
     }

@@ -2,6 +2,7 @@ import { allProjects } from "../..";
 import { deleteTask } from "../tasks/deleteTask";
 import { changeCase } from "../misc/changeCase";
 import { modal } from "./modals";
+import { addProject } from "../projects/addProject";
 
 const folderImg = require("../../assets/images/folder.png");
 const folderImgActive = require("../../assets/images/folder-active.png")
@@ -54,13 +55,72 @@ export const render = function() {
         addProjectBtn.addEventListener("mouseenter", () => {
             addProjectIcon.src = addFolderImgActive;
         })
+
         addProjectBtn.addEventListener("mouseleave", () => {
             addProjectIcon.src = addFolderImg;
         })
+
+        const tabBtns = document.querySelectorAll(".tab-btn");
+        tabContainer.addEventListener("click", (e) => {
+            // add project click
+            if (e.target.closest(".add-project-btn")) {
+                // render addProjectModal & handle form if submitted
+                modalController.addProjectModal();
+                const addProjectDialog = document.getElementById("add-project-dialog");
+                addProjectDialog.showModal();
+                addProjectFormSubmission();
+            // tab-btn click
+            } else if (e.target.closest(".tab-btn")){
+                // Load tasks on tab click & update class to active
+                tabBtns.forEach(otherBtn => {
+                    otherBtn.classList.remove("tab--active");
+                });
+                e.target.classList.add("tab--active");
+                taskCounter();
+                renderTasks();
+            }
+        });
+
+        // Ensure first page load is the 'Home' project tab
+        const homeTab = Array.from(tabBtns).find(btn => btn.textContent.toLowerCase() === "home");
+        homeTab.click();
+
+        const addProjectFormSubmission = function() {
+            // handles addProject form being submitted
+            const form = document.querySelector(".add-project-form");
+            document.addEventListener("submit", (e) => {
+                const addProjectDialog = document.getElementById("add-project-dialog");
+                if (e.target.closest(".add-project-form")){
+                    e.preventDefault();
+                    const warning = document.querySelector(".warning-result");
         
-        addProjectBtn.addEventListener("click", () => {
-            modalController.addProjectModal();
-        })
+                    // If Cancel - Close & Reset form, if cancel btn pressed
+                    if (e.submitter.id === "add-project-cancel"){
+                        addProjectDialog.close();
+                        form.reset();
+                        return;
+                    // If Confirm - Obtain title value & add project
+                    } else if (e.submitter.id === "add-project-confirm"){
+                        const title = document.getElementById("add-project_field").value;
+                        if (title === ""){
+                            console.log("project title can't be empty");
+                            return;
+                        }
+                        let addedProject = addProject(title);
+                        if (!addedProject){
+                            form.reset();
+                            warning.textContent = "Project Name Taken";
+                        } else if (addedProject) {
+                            warning.textContent = "";
+                            addProjectDialog.close();
+                            form.reset();
+                        } else {
+                            console.log("uh oh ")
+                        }
+                    }
+                }
+            })
+        }
     };
 
     const renderTasks = function(){
@@ -157,34 +217,6 @@ export const render = function() {
         })
     }
 
-    const handleTabClick = function() {
-        const tabBtns = document.querySelectorAll(".tab-btn");
-        let selectedTab = tabBtns[0].textContent.toLowerCase();
-        // let selectedTab;
-
-        // if (initialTab) {
-        //     selectedTab = initialTab;
-        // } else {
-        //     selectedTab = tabBtns[0].textContent.toLowerCase();
-        // }
-
-        tabBtns.forEach(btn => {
-            btn.addEventListener("click", (e) => { 
-                // Add active class only to current button.
-                tabBtns.forEach(otherBtn => {
-                    otherBtn.classList.remove("tab--active");
-                });
-                btn.classList.add("tab--active");
-                taskCounter();
-                renderTasks();
-            })
-        })
-
-        // Ensure first page load is the 'Home' project tab
-        const selectedTabButton = Array.from(tabBtns).find(btn => btn.textContent.toLowerCase() === selectedTab);
-        selectedTabButton.click();
-    }
-
     const renderControls = function() {
         const projectManagerBtn = document.querySelector(".project-manager-btn");
         const projectManagerIcon = document.createElement("img");
@@ -207,7 +239,6 @@ export const render = function() {
 
     controller.renderProjects = renderProjects;
     controller.renderTasks = renderTasks;
-    controller.handleTabClick = handleTabClick;
     controller.renderControls = renderControls;
 
     return controller;
