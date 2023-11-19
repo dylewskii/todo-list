@@ -49,22 +49,31 @@ export const modal = function() {
     const projectManagerModal = function () {
         const displayController = render();
         const projectManagerDialog = document.getElementById("project-manager-dialog");
-        const pmSelect = document.getElementById("project-manager-target_select");
+        const pmOptionSelect = document.getElementById("project-manager-option_select");
+        const pmTargetSelect = document.getElementById("project-manager-target_select");
         const form = document.querySelector(".project-manager-form");
         const allProjectsArr = Object.keys(allProjects);
 
-        while (pmSelect.firstChild) {
-            pmSelect.removeChild(pmSelect.firstChild);
+        while (pmTargetSelect.firstChild) {
+            pmTargetSelect.removeChild(pmTargetSelect.firstChild);
         }
-
-        projectManagerDialog.showModal();
 
         allProjectsArr.forEach(proj => {
             const option = document.createElement("option");
             option.value = proj;
             option.textContent = proj;
-            pmSelect.appendChild(option);
+            pmTargetSelect.appendChild(option);
         })
+
+        projectManagerDialog.showModal();
+
+        // Listen to changes made to the select field
+        let modeSelection;
+        let projectSelection;
+        projectManagerDialog.addEventListener('change', () => {
+            modeSelection = pmOptionSelect.value;
+            projectSelection = pmTargetSelect.value;
+        });
 
         form.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -75,14 +84,13 @@ export const modal = function() {
                 projectManagerDialog.close();
                 return;
             } else {
-                const pmOption = document.getElementById("project-manager-option_select").value;
-                if (pmOption === "delete"){
-                    const pmTarget = document.getElementById("project-manager-target_select").value;
-                    console.log(`You are trying to delete ${pmTarget}`)
-                    deleteProject(pmTarget);
+                if (modeSelection === "delete"){
+                    console.log(`You are trying to delete : ${projectSelection}`)
+                    deleteProject(projectSelection);
                     form.reset();
                     projectManagerDialog.close();
-                } else if (pmOption === "edit"){
+                } else if (modeSelection === "edit"){
+                    console.log(`You are trying to edit : ${projectSelection}`)
                     console.log("editing")
                 }
             }
