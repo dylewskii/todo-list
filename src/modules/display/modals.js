@@ -89,7 +89,44 @@ export const modal = function() {
  
         // Append dialog to add-project-container
         addProjectContainer.appendChild(addProjectDialog);
- 
+
+        const addProjectFormSubmission = function() {
+            // handles addProject form being submitted
+            const form = document.querySelector(".add-project-form");
+            document.addEventListener("submit", (e) => {
+                const addProjectDialog = document.getElementById("add-project-dialog");
+                if (e.target.closest(".add-project-form")){
+                    e.preventDefault();
+                    const warning = document.querySelector(".warning-result");
+        
+                    // If Cancel - Close & Reset form, if cancel btn pressed
+                    if (e.submitter.id === "add-project-cancel"){
+                        addProjectDialog.close();
+                        form.reset();
+                        return;
+                    // If Confirm - Obtain title value & add project
+                    } else if (e.submitter.id === "add-project-confirm"){
+                        const title = document.getElementById("add-project_field").value;
+                        if (title === ""){
+                            console.log("project title can't be empty");
+                            return;
+                        }
+                        let addedProject = addProject(title);
+                        if (!addedProject){
+                            form.reset();
+                            warning.textContent = "Project Name Taken";
+                        } else if (addedProject) {
+                            warning.textContent = "";
+                            addProjectDialog.close();
+                            form.reset();
+                        } else {
+                            console.log("uh oh ")
+                        }
+                    }
+                }
+            }, { once: true })
+        }
+        addProjectFormSubmission();
     }
 
     const projectManagerModal = function () {
