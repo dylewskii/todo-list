@@ -109,7 +109,7 @@
                         <h6 class="dialog-title project-manager-title">Project Manager:</h6>
                     </div>
                     <div class="project-manager-content">
-                        <label for="project-manager-option_select">Delete or Edit a Project?</label>
+                        <label for="project-manager-option_select">Select an option:</label>
                         <div class="nes-select">
                             <select required id="project-manager-option_select">
                                 <option value="delete" selected>Delete</option>
@@ -119,6 +119,10 @@
                         <label for="project-manager-target_select">Select the project:</label>
                         <div class="nes-select">
                             <select id="project-manager-target_select"></select>
+                        </div>
+                        <div class="nes-field">
+                            <label for="edited-project-field"><span class="required-symbol">*</span>Edited project name:</label>
+                            <input type="text" id="edited-project-field" class="nes-input" name="edited_project" disabled>
                         </div>
                     </div>
                     <menu class="project-manager-menu">

@@ -4,15 +4,12 @@ import "nes.css/css/nes.min.css";
 import './style.css';
 
 // --- Modules ---
-// project
 import { addProject } from './modules/projects/addProject';
 import { deleteProject } from './modules/projects/deleteProject';
-
-// display
 import { render } from './modules/display/render';
 import { modal } from './modules/display/modals';
 
-// --- Main ---
+// Holds Project/Todo data
 export const allProjects = {
     home: {
         "do groceries": ["do groceries", "Need to get groceries", "high", "13/10/2023", true, "home"]

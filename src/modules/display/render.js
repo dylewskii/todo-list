@@ -5,7 +5,6 @@ import { modal } from "./modals";
 
 const folderImg = require("../../assets/images/folder.png");
 const folderImgActive = require("../../assets/images/folder-active.png")
-
 const addFolderImg = require("../../assets/images/new-folder.png");
 const addFolderImgActive = require("../../assets/images/new-folder-active.png");
 
@@ -16,6 +15,7 @@ export const render = function() {
     const tabContainer = document.querySelector(".tab-container");
     const taskContainer = document.querySelector(".task-container");
 
+    // Updates # of remaining tasks and displays result on screen.
     const taskCounter = function(){
         const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
         const taskCount = document.getElementById("task-count");
@@ -28,6 +28,7 @@ export const render = function() {
         taskCount.nextElementSibling.textContent = `task${plural} left today`;
     }
 
+    // Renders every project currently held by allProjects object.
     const renderProjects = function() {
         while (tabContainer.firstChild) {
             tabContainer.removeChild(tabContainer.firstChild);
@@ -84,6 +85,7 @@ export const render = function() {
         homeTab.click();
     };
 
+    // Renders every task of currently open project tab.
     const renderTasks = function(){
         const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
         const selectedTabTasks = Object.keys(allProjects[selectedTab]);
@@ -179,6 +181,7 @@ export const render = function() {
         })
     }
 
+    // Renders project manager button (used to delete/edit projects) 
     const renderControls = function() {
         const projectManagerBtn = document.querySelector(".project-manager-btn");
         const projectManagerIcon = document.createElement("img");

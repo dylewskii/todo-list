@@ -2,18 +2,21 @@ import { allProjects } from "../..";
 import { render } from "../display/render";
 import { modal } from "../display/modals";
 
-// Deletes project from allProject object.
-export function deleteProject(projectName) {
-    if (!allProjects.hasOwnProperty(projectName)){
+// Edits project name and updates allProject object.
+export function editProject(ogProjectName, newProjectName) {
+    if (!allProjects.hasOwnProperty(ogProjectName)){
         console.log("project does not exist")
         return false;
+    } else if (allProjects.hasOwnProperty(newProjectName)) {
+        console.log("project name already taken")
+        return false;
     } else {
-        delete allProjects[projectName];
+        // Logic HERE
         const displayController = render()
         const modalController = modal();
         displayController.renderProjects();
         modalController.addTodoModal();
-        console.log("project deleted")
+        console.log("project edited")
         return true;
     }
 }

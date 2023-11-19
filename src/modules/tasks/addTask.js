@@ -1,6 +1,7 @@
 import { allProjects } from "../..";
 import { render } from "../display/render";
 
+// Handles the addition of Todos, to allProjects object.
 export function addTask(title, description="N/A", priority="low", dueDate="N/A", completed=false, projectName="home"){
     const task = {};
 
@@ -14,4 +15,6 @@ export function addTask(title, description="N/A", priority="low", dueDate="N/A",
     const taskValues = Object.values(task);
     allProjects[task.project][task.title] = taskValues;
     console.log("task added");
+    const displayController = render();
+    displayController.renderTasks();
 }

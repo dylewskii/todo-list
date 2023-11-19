@@ -1,15 +1,16 @@
 import { allProjects } from "../..";
+import { addProject } from "../projects/addProject";
+import { deleteProject } from "../projects/deleteProject";
+import { editProject } from "../projects/editProject";
 import { addTask } from "../tasks/addTask";
 import { editTask } from "../tasks/editTask";
 import { render } from "./render";
 import { changeCase } from "../misc/changeCase";
-import { addProject } from "../projects/addProject";
-import { deleteProject } from "../projects/deleteProject";
     
 export const modal = function() {
     const controller = {};
 
-    // Creates an Add Project Modal
+    // Dynamically creates an Add Project modal.
     const addProjectModal = function () {
         const addProjectContainer = document.querySelector(".add-project-container");
  
@@ -79,16 +80,13 @@ export const modal = function() {
  
         addProjectMenu.appendChild(cancelButton);
         addProjectMenu.appendChild(confirmButton);
- 
         form.appendChild(addProjectHeader);
         form.appendChild(addProjectContent);
         form.appendChild(addProjectMenu);
- 
-        // Append form to dialog
         addProjectDialog.appendChild(form);
- 
-        // Append dialog to add-project-container
         addProjectContainer.appendChild(addProjectDialog);
+
+        addProjectFormSubmission();
 
         const addProjectFormSubmission = function() {
             // handles addProject form being submitted
@@ -126,60 +124,73 @@ export const modal = function() {
                 }
             }, { once: true })
         }
-        addProjectFormSubmission();
     }
 
+    // Manages the deleting & editing of project names.
     const projectManagerModal = function () {
-        const displayController = render();
         const projectManagerDialog = document.getElementById("project-manager-dialog");
-        const pmOptionSelect = document.getElementById("project-manager-option_select");
-        const pmTargetSelect = document.getElementById("project-manager-target_select");
         const form = document.querySelector(".project-manager-form");
         const allProjectsArr = Object.keys(allProjects);
 
-        while (pmTargetSelect.firstChild) {
-            pmTargetSelect.removeChild(pmTargetSelect.firstChild);
+        let modeSelection = document.getElementById("project-manager-option_select");
+        let projectSelection = document.getElementById("project-manager-target_select");
+        let editedField = document.getElementById("edited-project-field");
+
+        // Clear DOM
+        while (projectSelection.firstChild) {
+            projectSelection.removeChild(projectSelection.firstChild);
         }
 
+        // Load available options
         allProjectsArr.forEach(proj => {
             const option = document.createElement("option");
             option.value = proj;
             option.textContent = proj;
-            pmTargetSelect.appendChild(option);
+            projectSelection.appendChild(option);
         })
 
         projectManagerDialog.showModal();
 
         // Listen to changes made to the select field
-        let modeSelection;
-        let projectSelection;
-        projectManagerDialog.addEventListener('change', () => {
-            modeSelection = pmOptionSelect.value;
-            projectSelection = pmTargetSelect.value;
-        });
+        function handleSelectChange() {
+            modeSelection = modeSelection.value;
+          
+            // If selected option is "edit" => enable/disable the input field accordingly
+            if (modeSelection === 'edit') {
+                editedField.removeAttribute('disabled');
+            } else {
+                editedField.setAttribute('disabled', true);
+            }
+        }
 
-        form.addEventListener("submit", (e) => {
+        function handleFormSubmit(e) {
             e.preventDefault();
-
+          
             // Close & Reset form, if cancel btn pressed
-            if (e.submitter.id === "project-manager-cancel"){
+            if (e.submitter.id === 'project-manager-cancel') {
                 form.reset();
                 projectManagerDialog.close();
                 return;
-            } else {
-                if (modeSelection === "delete"){
-                    console.log(`You are trying to delete : ${projectSelection}`)
-                    deleteProject(projectSelection);
-                    form.reset();
-                    projectManagerDialog.close();
-                } else if (modeSelection === "edit"){
-                    console.log(`You are trying to edit : ${projectSelection}`)
-                    console.log("editing")
-                }
             }
-        }, { once : true})
+            
+            if (modeSelection.value === 'delete') {
+                console.log(`You are trying to delete : ${projectSelection.value}`);
+                deleteProject(projectSelection.value);
+            } else if (modeSelection.value === 'edit') {
+                console.log(`You are trying to edit : ${projectSelection.value}`);
+                console.log(`New Project = ${editedField.value}`);
+            }
+
+            form.reset();
+            projectManagerDialog.close();
+        }
+        
+        // Event Listeners
+        modeSelection.addEventListener('change', handleSelectChange)
+        form.addEventListener("submit", handleFormSubmit, { once : true})
     }
 
+    // Handles the adding of Todo's.
     const addTodoModal = function (){
         const addTodoDialog = document.getElementById("add-todo-dialog");
         const form = document.querySelector(".add-todo-form");
@@ -220,11 +231,10 @@ export const modal = function() {
 
             addTodoDialog.close();
             form.reset();
-            const displayController = render();
-            displayController.renderTasks();
         })
     }
 
+    // Displays an Information modal for the specified Todo.
     const infoModal = function (e){
         const infoContent = document.querySelector(".info-form-content");
         while (infoContent.firstChild) {
@@ -267,6 +277,7 @@ export const modal = function() {
         }
     }
 
+    // Handles the editing of Todo inforamtion.
     const editModal = function (e){
         // NEED TO FIX -  Provide live color feedback when edits are made
         const changeColor = function (e) {
