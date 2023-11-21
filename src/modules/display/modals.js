@@ -1,4 +1,4 @@
-import { allProjects } from "../..";
+import { allProjects, saveToLocalStorage, retrieveFromLocalStorage } from "../..";
 import { addProject } from "../projects/addProject";
 import { deleteProject } from "../projects/deleteProject";
 import { editProject } from "../projects/editProject";
@@ -86,8 +86,6 @@ export const modal = function() {
         addProjectDialog.appendChild(form);
         addProjectContainer.appendChild(addProjectDialog);
 
-        addProjectFormSubmission();
-
         const addProjectFormSubmission = function() {
             // handles addProject form being submitted
             const form = document.querySelector(".add-project-form");
@@ -104,7 +102,7 @@ export const modal = function() {
                         return;
                     // If Confirm - Obtain title value & add project
                     } else if (e.submitter.id === "add-project-confirm"){
-                        const title = document.getElementById("add-project_field").value;
+                        const title = document.getElementById("add-project_field").value.toLowerCase();;
                         if (title === ""){
                             console.log("project title can't be empty");
                             return;
@@ -124,6 +122,8 @@ export const modal = function() {
                 }
             }, { once: true })
         }
+
+        addProjectFormSubmission();
     }
 
     // Manages the deleting & editing of project names.

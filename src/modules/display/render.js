@@ -1,4 +1,4 @@
-import { allProjects } from "../..";
+import { allProjects, saveToLocalStorage, retrieveFromLocalStorage} from "../..";
 import { deleteTask } from "../tasks/deleteTask";
 import { changeCase } from "../misc/changeCase";
 import { modal } from "./modals";
@@ -11,7 +11,6 @@ const addFolderImgActive = require("../../assets/images/new-folder-active.png");
 export const render = function() {
     const controller = {};
     const modalController = modal();
-    const allProjectsArr = Object.keys(allProjects);
     const tabContainer = document.querySelector(".tab-container");
     const taskContainer = document.querySelector(".task-container");
 
@@ -30,6 +29,8 @@ export const render = function() {
 
     // Renders every project currently held by allProjects object.
     const renderProjects = function() {
+        const allProjectsArr = Object.keys(allProjects);
+        console.log(allProjects)
         while (tabContainer.firstChild) {
             tabContainer.removeChild(tabContainer.firstChild);
         }
@@ -117,14 +118,17 @@ export const render = function() {
                 taskDiv.classList.add("task--completed");
                 taskInput.checked = true;
             }
+
             // toggle class & update allProjects completed status
             taskInput.addEventListener("click", () => {
                 taskDiv.classList.toggle("task--completed", taskInput.checked);
                 if (taskArr[taskArr.length - 2]){
-                    taskArr.splice(4, 1, false);
+                    allProjects[selectedTab][task].splice(4, 1, false);
+                    saveToLocalStorage()
                     taskCounter()
                 } else {
-                    taskArr.splice(4, 1, true);
+                    allProjects[selectedTab][task].splice(4, 1, true);
+                    saveToLocalStorage()
                     taskCounter()
                 }
             })

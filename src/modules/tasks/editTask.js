@@ -1,4 +1,4 @@
-import { allProjects } from "../..";
+import { allProjects, saveToLocalStorage } from "../..";
 import { addTask } from "./addTask";
 import { render } from "../display/render";
 

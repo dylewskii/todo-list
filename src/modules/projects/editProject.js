@@ -1,4 +1,4 @@
-import { allProjects } from "../..";
+import { allProjects, saveToLocalStorage } from "../..";
 import { render } from "../display/render";
 import { modal } from "../display/modals";
 
