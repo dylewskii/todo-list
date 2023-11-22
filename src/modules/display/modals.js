@@ -305,28 +305,15 @@ export const modal = function() {
         let currCompleted = document.getElementById("edit_completed_select");
         let currProject = document.getElementById("edit_project_field");
 
-        for (let i = 0; i < taskArr.length; i++){
-            if (i === 0){
-                currTitle.value = `${taskArr[0]}`
-                // currTitle.addEventListener("input", changeColor(currTitle));
-            } else if (i === 1){
-                currDesc.value = `${taskArr[1]}`;
-                // currDesc.addEventListener("input", changeColor(currDesc));
-            } else if (i === 2){
-                currPriority.value = `${taskArr[2]}`;
-                // currPriority.addEventListener("input", changeColor(currPriority));
-            } else if (i === 3){
-                currDate.value = `${taskArr[3]}`;
-                // currDate.addEventListener("input", changeColor(currDate));
-            } else if (i === 4){
-                currCompleted.value = `${taskArr[4]}`;
-                // currDate.addEventListener("input", changeColor(currCompleted));
-            } else if (i === 5){
-                currProject.value = `${taskArr[5]}`;
-                // currProject.addEventListener("input", changeColor(currProject));
-            } else {
-                console.log("Task has too many values");
-            }
+        const inputFields = [currTitle, currDesc, currPriority, currDate, currCompleted, currProject];
+
+        for (let i = 0; i < taskArr.length && i < inputFields.length; i++) {
+            inputFields[i].value = `${taskArr[i]}`;
+            // inputFields[i].addEventListener("input", () => changeColor(inputFields[i]));
+        }
+
+        if (taskArr.length > inputFields.length) {
+            console.log("Task has too many values");
         }
 
         editForm.addEventListener("submit", (e) => {
