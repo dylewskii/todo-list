@@ -2,6 +2,7 @@
 @font-face {
     font-family: "8bit";
     src: url('/src/assets/fonts/PressStart2P-Regular.ttf');
+    font-display: swap;
 }
 
 /* --- Page Structure --- */
@@ -13,12 +14,11 @@ body {
     min-width: 100vw;
     min-height: 100vh;
     display: grid;
-    grid-template-rows: 25% 5% 60% 10%;
+    grid-template-rows: 25% 5% 55% 15%;
     font-family: "8bit";
 }
 
 /* --- Header --- */
-
 .header {
     background-color: #87ccf8;
     background-image: url(./assets/images/pixel-art-header.jpg);
@@ -47,13 +47,14 @@ body {
 }
 
 .subheader {
-    /* background-color: rgb(255,248,199); */
-    background: linear-gradient(to bottom, rgb(255,248,199), rgb(253, 223, 0));
+    /* background-color: rgb(255,248,199);  */
+    background: linear-gradient(to bottom, rgb(255,248,199), rgb(13,131,62));
     width: 100%;
     grid-row: 2;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    padding-right: 20px;
 }
 
 .subheader > div {
@@ -65,7 +66,6 @@ body {
 }
 
 /* --- Main Content --- */
-
 .content {
     grid-row: 3;
     width: 100%;
@@ -73,9 +73,10 @@ body {
     grid-template-rows: 75px auto;
     row-gap: 10px;
     flex-direction: column;
-    padding: 20px 15px;
+    padding: 15px 15px 0 15px;
     overflow-x: hidden;
     background-color: white;
+    /* background-color: grey; */
 }
 .task-container, .tab-container {
     width: 100%;
@@ -98,8 +99,6 @@ body {
 
 /* 2 - Tasks */
 .task-container {
-    display: grid;
-    row-gap: 10px;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -108,12 +107,14 @@ body {
     display: grid;
     width: 100%;
     min-height: 50px;
+    max-height: 50px;
     grid-template-columns: 10% 10% 35% 45%;
     justify-content: center;
     align-items: center;
-    /* padding: 0 15px; */
+    padding: 0 15px;
     font-size: 0.8rem;
     background-color: white;
+    margin-bottom: 10px;
 }
 
 .task--completed {
@@ -164,13 +165,12 @@ body {
 }
 
 /* --- TODO Controls --- */
-
 .todo-controls {
     grid-row: 4;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 50px;
+    margin: 5px 50px;
 }
 
 .warning-result {
@@ -213,6 +213,10 @@ body {
     color: #1E9CED;
 }
 
+input[type="text"]:disabled {
+    background-color: rgb(183, 183, 183);
+}
+
 .dialog-header {
     display: flex;
     justify-content: center;
@@ -249,7 +253,6 @@ form label {
 }
 
 /* --- Media Queries --- */
-
 @media (min-width: 640px){
     .header-title {
         font-size: 1rem;
@@ -272,8 +275,8 @@ form label {
     }
 }
 
-@media (max-width: 1024px){
+/* @media (max-width: 1024px){
     .header-title {
-        font-size: 2.5rem;
+        font-size: 4rem;
     }
-}
+} */
