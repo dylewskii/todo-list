@@ -245,7 +245,7 @@ export const modal = function() {
         infoDialog.showModal(e);
 
         const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
-        const clickedTask = changeCase(e.target.parentElement.parentElement.children[1].textContent, "lowercase");
+        const clickedTask = changeCase(e.target.parentElement.parentElement.children[2].textContent, "lowercase");
         const taskArr = allProjects[selectedTab][clickedTask];
         
         const labels = ["Title:", "Description:", "Priority:", "Due Date:", "Completed:", "Project:"];
