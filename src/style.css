@@ -5,7 +5,7 @@
 }
 
 /* --- Page Structure --- */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
 
@@ -30,6 +30,7 @@ body {
     display: flex;
     align-items: flex-end;
     padding-left: 20px;
+    overflow: hidden;
 }
 
 .header-title {
@@ -57,7 +58,6 @@ body {
 
 .subheader > div {
     display: flex;
-    overflow: hidden;
 }
 
 #task-count {
@@ -71,7 +71,7 @@ body {
     width: 100%;
     display: grid;
     grid-template-rows: 75px auto;
-    row-gap: 15px;
+    row-gap: 10px;
     flex-direction: column;
     padding: 20px 15px;
     overflow-x: hidden;
@@ -82,6 +82,11 @@ body {
 }
 
 /* 1 - Tabs */
+.tab-container {
+   /* need to stop scrolling here */
+   overflow: hidden;
+}
+
 .tab--active {
     background-color: #1E9CED;
     height: 2.5rem;
@@ -91,11 +96,17 @@ body {
     outline: none;
 }
 
+/* 2 - Tasks */
+.task-container {
+    display: grid;
+    row-gap: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
 
-/* 1 - Tasks */
 .task {
     display: grid;
-    width: 98%;
+    width: 100%;
     min-height: 50px;
     grid-template-columns: 10% 10% 35% 45%;
     justify-content: center;
@@ -116,8 +127,8 @@ body {
     width: 100%;
     margin: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .task__checkbox {
@@ -131,6 +142,9 @@ body {
 
 .task__title {
     grid-column: 3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .task__controls {
@@ -140,17 +154,13 @@ body {
 }
 
 .task__title > p {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0;
     font-size: 0.5rem;
 }
 
 .task-btn {
-    width: 80px;
+    width: 50px;
     margin: 0 10px;
-    font-size: 0.5rem;
+    font-size: 0.4rem;
 }
 
 /* --- TODO Controls --- */
@@ -203,12 +213,7 @@ body {
     color: #1E9CED;
 }
 
-.info-form-header {
-    display: flex;
-    justify-content: space-between;
-}
-
-.dialog-title-container {
+.dialog-header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -220,25 +225,32 @@ body {
     text-decoration: underline;
 }
 
+.dialog-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+}
+
+.info-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.info-title {
+    font-size: 1.1rem;
+}
+
 form label {
     margin-top: 15px;
     font-size: 0.8rem;
 }
 
-#project_field {
-    margin-bottom: 30px;
-}
-
-.dialog-menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
-}
-
 /* --- Media Queries --- */
 
-@media (max-width: 640px){
+@media (min-width: 640px){
     .header-title {
         font-size: 1rem;
     }
@@ -246,6 +258,12 @@ form label {
     /* .content {
         padding: 50px 25px;
     } */
+
+    .task__priority {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @media (max-width: 768px){

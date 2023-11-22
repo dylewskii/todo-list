@@ -30,7 +30,7 @@ export const modal = function() {
  
         // add-project-header
         const addProjectHeader = document.createElement("div");
-        addProjectHeader.classList.add("add-project-header");
+        addProjectHeader.classList.add("dialog-header", "add-project-header");
  
         const dialogTitle = document.createElement("h6");
         dialogTitle.classList.add("dialog-title", "add-project-title");
@@ -66,7 +66,7 @@ export const modal = function() {
  
         // add-project-menu
         const addProjectMenu = document.createElement("menu");
-        addProjectMenu.classList.add("add-project-menu");
+        addProjectMenu.classList.add("dialog-menu", "add-project-menu");
  
         const cancelButton = document.createElement("button");
         cancelButton.classList.add("nes-btn");

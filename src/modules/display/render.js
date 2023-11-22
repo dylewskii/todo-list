@@ -175,7 +175,7 @@ export const render = function() {
             const infoBtn = document.createElement("button");
             infoBtn.classList.add("task-btn", "nes-btn");
             infoBtn.id = "infoBtn";
-            infoBtn.textContent = "Info";
+            infoBtn.textContent = "i";
             infoBtn.addEventListener("click", (e) => {
                 modalController.infoModal(e);
             })
