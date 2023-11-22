@@ -291,12 +291,11 @@ export const modal = function() {
         };
 
         const editForm = document.querySelector(".edit-form");
-        const editFormContent = document.querySelector(".edit-form-content");
         const editDialog = document.getElementById("edit-dialog");
         editDialog.showModal(e);
 
         const selectedTab = document.querySelector(".tab--active").textContent.toLowerCase();
-        const clickedTask = changeCase(e.target.parentElement.parentElement.children[1].textContent, "lowercase");
+        const clickedTask = changeCase(e.target.parentElement.parentElement.children[2].textContent, "lowercase");
         const taskArr = allProjects[selectedTab][clickedTask];
 
         let currTitle = document.getElementById("edit_title_field");
