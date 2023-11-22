@@ -108,17 +108,16 @@ body {
 .task--completed {
     background-color: rgb(105,183,104);
     /* border-left: 5px solid rgb(105,183,104); */
-    /* DARK GREEN = rgb(13,131,62) OR #0D833E*/
-    /* LIGHT GREEN = rgb(105,183,104) OR #69B768 */
 }
 
 .task__priority {
     grid-column: 1;
+    height: 100%;
+    width: 100%;
     margin: 0;
-}
-
-.star {
-    /* font-size: ; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .task__checkbox {

@@ -101,8 +101,30 @@ export const render = function() {
             const taskDiv = document.createElement("div");
             taskDiv.classList.add("task");
             taskContainer.appendChild(taskDiv);
+
+            // 1 - priority
+            const taskPriority = document.createElement("div");
+            taskPriority.classList.add("task__priority");
+            taskDiv.appendChild(taskPriority);
+
+            // low = 1 full star & 2 empty stars
+            // medium = 2 full stars & 1 empty stars
+            // high = 3 full stars & 0 empty stars
+            const priorityLevel = allProjects[selectedTab][task][2];
+            for (let i = 0; i < 3; i++) {
+                const starIcon = document.createElement("i");
+                starIcon.classList.add("nes-icon", "is-small", "star");
             
-            // first child container
+                if (priorityLevel === "low" && i > 0) {
+                    starIcon.classList.add("is-empty");
+                } else if (priorityLevel === "medium" && i > 1) {
+                    starIcon.classList.add("is-empty");
+                }
+            
+                taskPriority.appendChild(starIcon);
+            }
+            
+            // 2 - checkbox
             const taskLabel = document.createElement("label");
             taskLabel.classList.add("task__checkbox");
             taskDiv.appendChild(taskLabel);
@@ -136,7 +158,7 @@ export const render = function() {
             const taskSpan = document.createElement("span");
             taskLabel.appendChild(taskSpan);
 
-            // second child container
+            // 3 - title
             const taskTitle = document.createElement("div");
             taskTitle.classList.add("task__title");
 
@@ -146,7 +168,7 @@ export const render = function() {
             taskTitle.appendChild(p);
             taskDiv.appendChild(taskTitle);
 
-            // third child container
+            // 4 - controls
             const taskControls = document.createElement("div");
             taskControls.classList.add("task__controls");
 
