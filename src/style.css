@@ -14,7 +14,7 @@ body {
     min-width: 100vw;
     min-height: 100vh;
     display: grid;
-    grid-template-rows: 25% 5% 55% 15%;
+    grid-template-rows: 20% 5% 55% 20%;
     font-family: "8bit";
 }
 
@@ -34,16 +34,16 @@ body {
 }
 
 .header-title {
-    font-size: 1rem;
+    font-size: 1.8rem;
     font-family: "8bit";
-    color: #1E9CED;
+    color: black;
     position: relative;
     top: -25%;
     left: 5%;
 }
 
 .pop {
-    color: black;
+    color: #1E9CED;
 }
 
 .subheader {
@@ -71,15 +71,19 @@ body {
     width: 100%;
     display: grid;
     grid-template-rows: 75px auto;
-    row-gap: 10px;
+    row-gap: 5px;
     flex-direction: column;
     padding: 15px 15px 0 15px;
     overflow-x: hidden;
-    background-color: white;
-    /* background-color: grey; */
+    background-color: #d7d7d7;
 }
 .task-container, .tab-container {
     width: 100%;
+}
+
+.task-container > .nes-container.is-rounded {
+    padding: 0;
+    margin-bottom: 20px;
 }
 
 /* 1 - Tabs */
@@ -101,25 +105,25 @@ body {
 .task-container {
     overflow-x: hidden;
     overflow-y: scroll;
+    background-color: #bdae58;
+    box-shadow: inset 3px 3px rgba(0, 0, 0, 0.15);
 }
 
 .task {
     display: grid;
     width: 100%;
-    min-height: 50px;
-    max-height: 50px;
+    min-height: 60px;
+    max-height: 70px;
     grid-template-columns: 10% 10% 35% 45%;
     justify-content: center;
     align-items: center;
-    padding: 0 15px;
     font-size: 0.8rem;
+    margin-bottom: 25px;
     background-color: white;
-    margin-bottom: 10px;
 }
 
 .task--completed {
     background-color: rgb(105,183,104);
-    /* border-left: 5px solid rgb(105,183,104); */
 }
 
 .task__priority {
@@ -170,7 +174,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 5px 50px;
+    padding: 0 50px;
+    background-color: #d7d7d7;
+    /* background-color: #EEEEEE; */
+    /* background-color: #B5B6B8; */
 }
 
 .warning-result {
@@ -179,11 +186,9 @@ body {
     padding: 10px 0 0 90px;
 }
 
-.project-manager-btn, .project-manager-icon {
-    max-width: 80px;
-    max-height: 80px;
-    border: none;
-    background-color: white;
+.project-manager-icon {
+    max-width: 50px;
+    max-height: 50px;
 }
 
 .project-manager-btn:focus {
@@ -195,7 +200,9 @@ body {
     max-height: 40px;
     padding-bottom: 4px;
     border: none;
-    background-color: white;
+    background-color: #d7d7d7;
+    /* background-color: #EEEEEE; */
+    /* background-color: #B5B6B8; */
 }
 
 .add-project-btn:focus {
@@ -207,6 +214,56 @@ body {
     height: 70px;
 }
 
+.btn-AB {
+    width: 180px;
+    height: 90px;
+    background: #DFDFDF;
+    border-radius: 30px;
+    transform: rotate(-25deg);
+}
+
+.btn-AB > button {
+    border: none;
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+    background: #A93671;
+    position: relative;
+    left: 12px;
+    top: 4px;
+}
+
+/* Pad */
+.pad {
+    margin: 40px 0 0 100px;
+}
+
+.btn-direction {
+    width: 100px;
+    height: 100px;
+}
+
+.vertical {
+    bottom: 20px;
+}
+
+.horizontal {
+    bottom: 120px;
+}
+  
+.vertical,
+.horizontal {
+    position: relative;
+    width: 35px;
+    height: 100px;
+    background: #444;
+    border-radius: 5px;
+}
+  
+/* Rotate 90º */
+.horizontal {
+    transform: rotate(90deg);
+}
 
 /* --- Dialogs/Modals --- */
 .required-symbol {
@@ -255,7 +312,7 @@ form label {
 /* --- Media Queries --- */
 @media (min-width: 640px){
     .header-title {
-        font-size: 1rem;
+        font-size: 2.5rem;
     }
 
     /* .content {
@@ -269,14 +326,8 @@ form label {
     }
 }
 
-@media (max-width: 768px){
+@media (min-width: 768px){
     .header-title {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
 }
-
-/* @media (max-width: 1024px){
-    .header-title {
-        font-size: 4rem;
-    }
-} */

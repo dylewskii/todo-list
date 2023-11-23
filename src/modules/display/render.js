@@ -99,7 +99,7 @@ export const render = function() {
         selectedTabTasks.forEach(task => {
             // task div
             const taskDiv = document.createElement("div");
-            taskDiv.classList.add("task");
+            taskDiv.classList.add("task", "nes-container", "is-rounded"); // "nes-container", "is-rounded"
             taskContainer.appendChild(taskDiv);
 
             // 1 - priority

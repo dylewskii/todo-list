@@ -8,7 +8,7 @@
 <body>
     <!-- Main Header -->
     <header class="header">
-        <h1 class="header-title"><span class="pop">DO</span> 8B<span class="pop">IT NOW</span></h1>
+        <h1 class="header-title">DO <span class="pop">8B</span>IT NOW</h1>
     </header>
 
     <!-- Task Counter Subheader -->
@@ -22,7 +22,7 @@
     <!-- Project/Task Content -->
     <div class="content">
         <div class="tab-container"></div>
-        <div class="task-container"></div>
+        <div class="task-container nes-container"></div>
     </div>
 
     <!-- Add Project Modal -->
@@ -97,93 +97,108 @@
         </dialog>
     </section>
 
+    <!-- Project Manager Modal -->
+    <section class="project-manager-container">
+        <!-- <button class="project-manager-btn"></button> -->
+        <dialog class="nes-dialog is-rounded" id="project-manager-dialog">
+            <form method="dialog" class="project-manager-form">
+                <div class="dialog-header project-manager-header">
+                    <h6 class="dialog-title project-manager-title">Project Manager:</h6>
+                </div>
+                <div class="project-manager-content">
+                    <label for="project-manager-option_select">Select an option:</label>
+                    <div class="nes-select">
+                        <select required id="project-manager-option_select">
+                            <option value="delete" selected>Delete</option>
+                            <option value="edit">Edit</option>
+                        </select>
+                    </div>
+                    <label for="project-manager-target_select">Select the project:</label>
+                    <div class="nes-select">
+                        <select id="project-manager-target_select"></select>
+                    </div>
+                    <div class="nes-field">
+                        <label for="edited-project-field"><span class="required-symbol">*</span>Edited project name:</label>
+                        <input type="text" id="edited-project-field" class="nes-input" name="edited_project" disabled>
+                    </div>
+                </div>
+                <menu class="dialog-menu project-manager-menu">
+                    <button class="nes-btn" id="project-manager-cancel">Cancel</button>
+                    <button class="nes-btn is-primary" id="project-manager-confirm">Confirm</button>
+                </menu>
+            </form>
+        </dialog>
+    </section>
+
+    <!-- Add TODO Dialog/Modal -->
+    <section class="task-add-container">
+        <!-- <button class="add-btn nes-btn is-primary" onclick="document.getElementById('add-todo-dialog').showModal();">+</button> -->
+        <dialog class="nes-dialog is-rounded" id="add-todo-dialog">
+            <form method="dialog" class="add-todo-form">
+                <div class="dialog-header dialog-title-container">
+                    <h6 class="dialog-title add-todo-title">ADD A TODO</h6>
+                </div>
+
+                <div class="nes-field">
+                    <label for="title_field"><span class="required-symbol">*</span>Title:</label>
+                    <input type="text" id="title_field" class="nes-input" name="title">
+                </div>
+            
+                <div>
+                    <label for="desc_field">Description:</label>
+                    <textarea id="desc_field" class="nes-textarea" name="desc"></textarea>
+                </div>
+
+                <label for="priority_select">Priority:</label>
+                <div class="nes-select">
+                    <select required id="priority_select">
+                        <option value="low" selected>Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+
+                <div class="nes-field">
+                    <label for="date_field">Due Date:</label>
+                    <input type="date" id="date_field" class="nes-input" name="date">
+                </div>
+
+                <label for="completed_select">Completed:</label>
+                <div class="nes-select">
+                    <select required id="completed_select">
+                        <option value="false" selected>No</option>
+                        <option value="true">Yes</option>
+                    </select>
+                </div>
+
+                <div class="nes-field">
+                    <label for="project_field"><span class="required-symbol" required>*</span>Project:</label>
+                    <input type="text" id="project_field" class="nes-input" placeholder="Home">
+                </div>
+
+                <menu class="dialog-menu">
+                    <button class="nes-btn" id="dialog-cancel">Cancel</button>
+                    <button class="nes-btn is-primary" id="dialog-confirm">Confirm</button>
+                </menu>
+            </form>
+        </dialog>
+    </section>
+
     <div class="todo-controls">
-        <!-- Project Manager Modal -->
-        <section class="project-manager-container">
+
+        <!-- Direction Button Pad -->
+        <div class="pad">
+            <div class="btn-direction">
+                <div class="vertical"></div>
+                <div class="horizontal"></div>
+            </div>
+        </div>
+
+        <!-- A/B Buttons -->
+        <div class="btn-AB">
             <button class="project-manager-btn"></button>
-            <dialog class="nes-dialog is-rounded" id="project-manager-dialog">
-                <form method="dialog" class="project-manager-form">
-                    <div class="dialog-header project-manager-header">
-                        <h6 class="dialog-title project-manager-title">Project Manager:</h6>
-                    </div>
-                    <div class="project-manager-content">
-                        <label for="project-manager-option_select">Select an option:</label>
-                        <div class="nes-select">
-                            <select required id="project-manager-option_select">
-                                <option value="delete" selected>Delete</option>
-                                <option value="edit">Edit</option>
-                            </select>
-                        </div>
-                        <label for="project-manager-target_select">Select the project:</label>
-                        <div class="nes-select">
-                            <select id="project-manager-target_select"></select>
-                        </div>
-                        <div class="nes-field">
-                            <label for="edited-project-field"><span class="required-symbol">*</span>Edited project name:</label>
-                            <input type="text" id="edited-project-field" class="nes-input" name="edited_project" disabled>
-                        </div>
-                    </div>
-                    <menu class="dialog-menu project-manager-menu">
-                        <button class="nes-btn" id="project-manager-cancel">Cancel</button>
-                        <button class="nes-btn is-primary" id="project-manager-confirm">Confirm</button>
-                    </menu>
-                </form>
-            </dialog>
-        </section>
-
-        <!-- Add TODO Dialog/Modal -->
-        <section class="task-add-container">
-            <button class="add-btn nes-btn is-primary" onclick="document.getElementById('add-todo-dialog').showModal();">+</button>
-            <dialog class="nes-dialog is-rounded" id="add-todo-dialog">
-                <form method="dialog" class="add-todo-form">
-                    <div class="dialog-header dialog-title-container">
-                        <h6 class="dialog-title add-todo-title">ADD A TODO</h6>
-                    </div>
-
-                    <div class="nes-field">
-                        <label for="title_field"><span class="required-symbol">*</span>Title:</label>
-                        <input type="text" id="title_field" class="nes-input" name="title">
-                    </div>
-                
-                    <div>
-                        <label for="desc_field">Description:</label>
-                        <textarea id="desc_field" class="nes-textarea" name="desc"></textarea>
-                    </div>
-
-                    <label for="priority_select">Priority:</label>
-                    <div class="nes-select">
-                        <select required id="priority_select">
-                            <option value="low" selected>Low</option>
-                            <option value="medium">Medium</option>
-                            <option value="high">High</option>
-                        </select>
-                    </div>
-
-                    <div class="nes-field">
-                        <label for="date_field">Due Date:</label>
-                        <input type="date" id="date_field" class="nes-input" name="date">
-                    </div>
-
-                    <label for="completed_select">Completed:</label>
-                    <div class="nes-select">
-                        <select required id="completed_select">
-                            <option value="false" selected>No</option>
-                            <option value="true">Yes</option>
-                        </select>
-                    </div>
-
-                    <div class="nes-field">
-                        <label for="project_field"><span class="required-symbol" required>*</span>Project:</label>
-                        <input type="text" id="project_field" class="nes-input" placeholder="Home">
-                    </div>
-
-                    <menu class="dialog-menu">
-                        <button class="nes-btn" id="dialog-cancel">Cancel</button>
-                        <button class="nes-btn is-primary" id="dialog-confirm">Confirm</button>
-                    </menu>
-                </form>
-            </dialog>
-        </section>
+            <button class="add-btn" onclick="document.getElementById('add-todo-dialog').showModal();">+</button>
+        </div>
     </div>
 
 </body>
