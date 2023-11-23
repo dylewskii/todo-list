@@ -108,10 +108,11 @@ body {
 .task-container {
     flex-shrink: 1; 
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     background-color: #bdae58;
     box-shadow: inset 3px 3px rgba(0, 0, 0, 0.15);
     margin-top: 15px;
+    height: 300px;
 }
 
 .task {
