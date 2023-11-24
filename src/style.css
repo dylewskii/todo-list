@@ -109,6 +109,7 @@ body {
     background-color: #bdae58;
     box-shadow: inset 3px 3px rgba(0, 0, 0, 0.15);
     margin-top: 15px;
+    height: 500px;
 }
 
 .task {
@@ -185,16 +186,16 @@ body {
 /* todo item 1 */
 .pad {
     position: absolute;
-    top: 25%;
-    left: 25%;
-    width: 100px;
-    height: 100px;
+    top: 30%;
+    left: 20%;
+    width: 80px;
+    height: 80px;
 }
   
 .vertical,
 .horizontal {
     position: relative;
-    width: 35px;
+    width: 30px;
     height: 100px;
     background: #444;
     border-radius: 5px;
@@ -215,7 +216,7 @@ body {
     grid-column: 2;
     position: absolute;
     bottom: 30%;
-    left: 10%;
+    left: 5%;
     margin: 20px auto;
     height: 12px;
     width: 60px;
@@ -233,9 +234,9 @@ body {
     justify-content: space-evenly;
     align-items: center;
     position: absolute;
-    right: 20%;
-    width: 170px;
-    height: 70px;
+    right: 5%;
+    width: 160px;
+    height: 60px;
     margin: 70px 30px 0 0;
     background: #DFDFDF;
     border-radius: 30px;
@@ -245,8 +246,8 @@ body {
 .AB-btns > button {
     border: none;
     border-radius: 100%;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background: #A93671;
 }
 
@@ -368,6 +369,21 @@ form label {
         justify-content: center;
         align-items: center;
     }
+
+    .power-btns {
+        left: 10%;
+    }
+
+    .AB-btns {
+        right: 5%;
+        width: 170px;
+        height: 70px;
+    }
+    
+    .AB-btns > button {
+        width: 60px;
+        height: 60px;
+    }
 }
 
 @media (min-width: 768px){
@@ -376,7 +392,7 @@ form label {
     }
 
     .task-container {
-        width: 800px;
+        width: 850px;
         margin: 0 auto;
     }
 
@@ -388,11 +404,46 @@ form label {
         margin: 0 auto;
     }
 
+    .pad {
+        left: 30%;
+    }
+
     .power-btns {
         left: 20%;
     }
 
     .AB-btns {
-        right: 55%
+        right: 30%
+    }
+}
+
+@media (min-width: 1024px){
+    .header-title {
+        font-size: 3rem;
+    }
+
+    .task-container {
+        width: 850px;
+        margin: 0 auto;
+    }
+
+    .tab-container {
+        margin: 10px 10px;
+    }
+
+    .todo-controls {
+        margin: 0 auto;
+    }
+
+    .pad {
+        left: 30%;
+    }
+
+    .power-btns {
+        left: 20%;
+    }
+
+    .AB-btns {
+        right: 60%
     }
 }
