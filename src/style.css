@@ -6,7 +6,7 @@
 }
 
 /* --- Page Structure --- */
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6, p, body {
     margin: 0;
 }
 
@@ -14,7 +14,7 @@ body {
     min-width: 100vw;
     min-height: 100vh;
     display: grid;
-    grid-template-rows: 20% 5% 55% 20%;
+    grid-template-rows: 15% 5% 50% 25% 5%;
     font-family: "8bit";
 }
 
@@ -112,7 +112,7 @@ body {
     background-color: #bdae58;
     box-shadow: inset 3px 3px rgba(0, 0, 0, 0.15);
     margin-top: 15px;
-    height: 300px;
+    height: 100%;
 }
 
 .task {
@@ -190,9 +190,17 @@ body {
     padding: 10px 0 0 90px;
 }
 
+.add-project-container, 
+.info-container, 
+.edit-container,
+.project-manager-container,
+.task-add-container {
+    display: none;
+}
+
 .project-manager-icon {
-    max-width: 50px;
-    max-height: 50px;
+    max-width: 40px;
+    max-height: 40px;
 }
 
 .project-manager-btn:focus {
@@ -217,6 +225,7 @@ body {
     width: 70px;
     height: 70px;
     font-size: 1.5rem;
+    transform: rotate(-5deg);
 }
 
 .AB-btns {
@@ -225,17 +234,18 @@ body {
     background: #DFDFDF;
     border-radius: 30px;
     transform: rotate(-25deg);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .AB-btns > button {
     border: none;
     border-radius: 100%;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     background: #A93671;
     position: relative;
-    left: 23px;
-    top: 8px;
 }
 
 .AB-btns > button:active {
@@ -271,6 +281,18 @@ body {
 
 .horizontal {
     transform: rotate(90deg);
+}
+
+/* --- Footer --- */
+footer {
+    grid-row: 5;
+    display: grid;
+    place-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #444;
+    color: white;
+    font-size: 0.8rem;
 }
 
 /* --- Dialogs/Modals --- */
