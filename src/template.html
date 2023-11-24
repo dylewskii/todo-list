@@ -11,7 +11,7 @@
         <h1 class="header-title">DO <span class="pop">8B</span>IT NOW</h1>
     </header>
 
-    <!-- Task Counter Subheader -->
+    <!-- Subheader (Task Counter) -->
     <section class="subheader">
         <div class="task-count-container">
             <span id="task-count"></span>
@@ -19,17 +19,43 @@
         </div>
     </section>
     
-    <!-- Project/Task Content -->
+    <!-- Content -->
     <div class="content">
         <div class="tab-container"></div>
         <div class="task-container nes-container"></div>
     </div>
 
-    <!-- Add Project Modal -->
+    <!-- Controls -->
+    <div class="todo-controls">
+        <div class="pad-wrapper">
+            <div class="pad">
+                <div class="vertical"></div>
+                <div class="horizontal"></div>
+            </div>
+        </div>
+        
+        <div class="power-btns">
+        </div>
+
+        <div class="AB-btns">
+            <button class="project-manager-btn"></button>
+            <button class="add-btn" onclick="document.getElementById('add-todo-dialog').showModal();">+</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Alan Dylewski 
+            <a href="https://github.com/dylewskii">
+                <i class="nes-icon github is-small"></i>
+            </a>
+        </p>
+    </footer>
+
+    <!-- Modals -->
     <section class="add-project-container">
     </section>
 
-    <!-- Info Modal -->
     <section class="info-container">
         <dialog class="nes-dialog is-rounded" id="info-dialog">
             <form method="dialog" class="info-form">
@@ -42,7 +68,6 @@
         </dialog>
     </section>
 
-    <!-- Edit Modal -->
     <section class="edit-container">
         <dialog class="nes-dialog is-rounded" id="edit-dialog">
             <form method="dialog" class="edit-form">
@@ -97,7 +122,6 @@
         </dialog>
     </section>
 
-    <!-- Project Manager Modal -->
     <section class="project-manager-container">
         <!-- <button class="project-manager-btn"></button> -->
         <dialog class="nes-dialog is-rounded" id="project-manager-dialog">
@@ -130,7 +154,6 @@
         </dialog>
     </section>
 
-    <!-- Add TODO Dialog/Modal -->
     <section class="task-add-container">
         <!-- <button class="add-btn nes-btn is-primary" onclick="document.getElementById('add-todo-dialog').showModal();">+</button> -->
         <dialog class="nes-dialog is-rounded" id="add-todo-dialog">
@@ -183,28 +206,5 @@
             </form>
         </dialog>
     </section>
-
-    <div class="todo-controls">
-
-        <!-- Direction Button Pad -->
-        <div class="pad">
-            <div class="vertical"></div>
-            <div class="horizontal"></div>
-        </div>
-
-        <!-- A/B Buttons -->
-        <div class="AB-btns">
-            <button class="project-manager-btn"></button>
-            <button class="add-btn" onclick="document.getElementById('add-todo-dialog').showModal();">+</button>
-        </div>
-    </div>
-
-    <footer>
-        <p>Alan Dylewski 
-            <a href="https://github.com/dylewskii">
-                <i class="nes-icon github is-small"></i>
-            </a>
-        </p>
-    </footer>
 </body>
 </html>

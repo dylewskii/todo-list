@@ -47,7 +47,6 @@ body {
 }
 
 .subheader {
-    /* background-color: rgb(255,248,199);  */
     background: linear-gradient(to bottom, rgb(255,248,199), rgb(13,131,62));
     width: 100%;
     grid-row: 2;
@@ -90,8 +89,6 @@ body {
 
 /* 1 - Tabs */
 .tab-container {
-    /* need to stop scrolling here */
-    /* overflow: scroll; */
     flex-shrink: 0; 
 }
 
@@ -112,7 +109,6 @@ body {
     background-color: #bdae58;
     box-shadow: inset 3px 3px rgba(0, 0, 0, 0.15);
     margin-top: 15px;
-    height: 100%;
 }
 
 .task {
@@ -176,98 +172,23 @@ body {
 
 /* --- TODO Controls --- */
 .todo-controls {
-    grid-row: 4;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 50px;
-    background-color: #d7d7d7;
-}
-
-.warning-result {
-    color: red;
-    font-size: 0.6rem;
-    padding: 10px 0 0 90px;
-}
-
-.add-project-container, 
-.info-container, 
-.edit-container,
-.project-manager-container,
-.task-add-container {
-    display: none;
-}
-
-.project-manager-icon {
-    max-width: 40px;
-    max-height: 40px;
-}
-
-.project-manager-btn:focus {
-    outline: none;
-}
-
-.add-project-btn, .add-project-icon {
-    max-width: 40px;
-    max-height: 40px;
-    padding-bottom: 4px;
-    border: none;
-    background-color: #d7d7d7;
-    /* background-color: #EEEEEE; */
-    /* background-color: #B5B6B8; */
-}
-
-.add-project-btn:focus {
-    outline: none;
-}
-
-.add-btn, .project-manager-btn {
-    width: 70px;
-    height: 70px;
-    font-size: 1.5rem;
-    transform: rotate(-5deg);
-}
-
-.AB-btns {
-    width: 200px;
-    height: 90px;
-    background: #DFDFDF;
-    border-radius: 30px;
-    transform: rotate(-25deg);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.AB-btns > button {
-    border: none;
-    border-radius: 100%;
-    width: 60px;
-    height: 60px;
-    background: #A93671;
     position: relative;
+    display: grid;
+    grid-template-columns:  1fr 1fr 1fr;
+    grid-template-rows: 200px 80px;
+    padding: 0 15px;
+    margin: 0 auto;
+    width: 100%;
+    background-color: #d7d7d7;
 }
 
-.AB-btns > button:active {
-    box-shadow: inset 0px 0px 5px #ee56a4;
-}
-
-.AB-btns > button:focus {
-    outline: none;
-}
-
+/* todo item 1 */
 .pad {
+    position: absolute;
+    top: 25%;
+    left: 25%;
     width: 100px;
     height: 100px;
-    margin: 40px 0 0 50px;
-}
-
-.vertical {
-    bottom: 20px;
-}
-
-.horizontal {
-    bottom: 120px;
 }
   
 .vertical,
@@ -279,8 +200,91 @@ body {
     border-radius: 5px;
 }
 
+.vertical {
+    bottom: 20px;
+}
+
 .horizontal {
+    bottom: 120px;
     transform: rotate(90deg);
+}
+
+/* todo item 2 */
+.power-btns {
+    grid-row: 2;
+    grid-column: 2;
+    position: absolute;
+    bottom: 30%;
+    left: 10%;
+    margin: 20px auto;
+    height: 12px;
+    width: 60px;
+    background: #999;
+    border-radius: 10px;
+    transform: rotate(-25deg);
+    box-shadow: 57px 27px #999, 0 0 0 5px #dfdfdf, 57px 27px 0 5px #dfdfdf;
+}
+  
+/* todo item 3 */
+.AB-btns {
+    grid-row: 1;
+    grid-column: 3;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    right: 20%;
+    width: 170px;
+    height: 70px;
+    margin: 70px 30px 0 0;
+    background: #DFDFDF;
+    border-radius: 30px;
+    transform: rotate(-25deg);
+}
+
+.AB-btns > button {
+    border: none;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    background: #A93671;
+}
+
+.AB-btns > button:active {
+    box-shadow: inset 0px 0px 5px #ee56a4;
+}
+
+.AB-btns > button:focus {
+    outline: none;
+}
+
+.project-manager-icon {
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.project-manager-btn:focus {
+    outline: none;
+}
+
+/* todo extras */
+.add-project-btn, .add-project-icon {
+    max-width: 40px;
+    max-height: 40px;
+    padding-bottom: 4px;
+    border: none;
+    background-color: #d7d7d7;
+}
+
+.add-project-btn:focus {
+    outline: none;
+}
+
+.add-btn, .project-manager-btn {
+    width: 70px;
+    height: 70px;
+    font-size: 1.5rem;
+    transform: rotate(-5deg);
 }
 
 /* --- Footer --- */
@@ -296,8 +300,22 @@ footer {
 }
 
 /* --- Dialogs/Modals --- */
+/* .add-project-container, 
+.info-container, 
+.edit-container,
+.project-manager-container,
+.task-add-container {
+    display: none;
+} */
+
 .required-symbol {
     color: #1E9CED;
+}
+
+.warning-result {
+    color: red;
+    font-size: 0.6rem;
+    padding: 10px 0 0 90px;
 }
 
 input[type="text"]:disabled {
@@ -345,10 +363,6 @@ form label {
         font-size: 2.5rem;
     }
 
-    /* .content {
-        padding: 50px 25px;
-    } */
-
     .task__priority {
         flex-direction: row;
         justify-content: center;
@@ -359,5 +373,26 @@ form label {
 @media (min-width: 768px){
     .header-title {
         font-size: 3rem;
+    }
+
+    .task-container {
+        width: 800px;
+        margin: 0 auto;
+    }
+
+    .tab-container {
+        margin: 10px 10px;
+    }
+
+    .todo-controls {
+        margin: 0 auto;
+    }
+
+    .power-btns {
+        left: 20%;
+    }
+
+    .AB-btns {
+        right: 55%
     }
 }
