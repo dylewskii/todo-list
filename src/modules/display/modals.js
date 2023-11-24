@@ -1,7 +1,6 @@
-import { allProjects, saveToLocalStorage, retrieveFromLocalStorage } from "../..";
+import { allProjects} from "../..";
 import { addProject } from "../projects/addProject";
 import { deleteProject } from "../projects/deleteProject";
-import { editProject } from "../projects/editProject";
 import { addTask } from "../tasks/addTask";
 import { editTask } from "../tasks/editTask";
 import { render } from "./render";
