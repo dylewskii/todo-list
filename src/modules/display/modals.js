@@ -193,6 +193,7 @@ export const modal = function() {
     const addTodoModal = function (){
         const addTodoDialog = document.getElementById("add-todo-dialog");
         const form = document.querySelector(".add-todo-form");
+        const warning = document.querySelector(".warning-result");
 
         form.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -210,22 +211,23 @@ export const modal = function() {
             let priority = document.getElementById("priority_select").value;
             let dueDate = document.getElementById("date_field").value;
             let completed = document.getElementById("completed_select").value;
-            let project = document.getElementById("project_field").value;
+            let project = document.getElementById("project_field").value.toLowerCase();
 
             if (title === "" || title === undefined){
-                addTodoDialog.close();
-                form.reset();  
-                console.log("can't add empty task")
+                warning.textContent = "Task name can't be empty.";
+                return;
+            } else if (!allProjects.hasOwnProperty(project)) {
+                warning.textContent = "Please enter valid project name.";
                 return;
             }
 
             // If undefined value provided, set a string value.
-            // title = title || "N/A"; 
             desc = desc || "N/A"; 
             priority = priority || "low"; 
             dueDate = dueDate || "N/A";
             project = project || "home"; 
             completed = completed === "true" ? true : false;
+
             addTask(title, desc, priority, dueDate, completed, project);
 
             addTodoDialog.close();
