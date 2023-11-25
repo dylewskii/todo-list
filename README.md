@@ -1,5 +1,7 @@
 # todo-list
 
+PixelDo: A Retro-Inspired 8-BIT ToDo App for Nostalgic Productivity 🎮✨.
+
 Live 👉 https://dylewskii.github.io/todo-list/
 
 ## Project Objectives:
