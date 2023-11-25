@@ -54,12 +54,12 @@ export const modal = function() {
         input.classList.add("nes-input");
         input.name = "add-project_field";
  
-        const warningResult = document.createElement("p");
-        warningResult.classList.add("warning-result");
+        const warning = document.createElement("p");
+        warning.classList.add("add-project-warning");
  
         nesField.appendChild(label);
         nesField.appendChild(input);
-        nesField.appendChild(warningResult);
+        nesField.appendChild(warning);
  
         addProjectContent.appendChild(nesField);
  
@@ -92,7 +92,7 @@ export const modal = function() {
                 const addProjectDialog = document.getElementById("add-project-dialog");
                 if (e.target.closest(".add-project-form")){
                     e.preventDefault();
-                    const warning = document.querySelector(".warning-result");
+                    const warning = document.querySelector(".add-project-warning");
         
                     // If Cancel - Close & Reset form, if cancel btn pressed
                     if (e.submitter.id === "add-project-cancel"){
@@ -103,13 +103,13 @@ export const modal = function() {
                     } else if (e.submitter.id === "add-project-confirm"){
                         const title = document.getElementById("add-project_field").value.toLowerCase();;
                         if (title === ""){
-                            console.log("project title can't be empty");
+                            warning.textContent = "Project Title can't be empty."
                             return;
                         }
                         let addedProject = addProject(title);
                         if (!addedProject){
                             form.reset();
-                            warning.textContent = "Project Name Taken";
+                            warning.textContent = "Project Name Taken.";
                         } else if (addedProject) {
                             warning.textContent = "";
                             addProjectDialog.close();
@@ -150,15 +150,21 @@ export const modal = function() {
 
         projectManagerDialog.showModal();
 
-        // Listen to changes made to the select field
+        // Handle edit/delete selection
         function handleSelectChange() {
+            const confirmBtn = document.getElementById("project-manager-confirm");
+            const warning = document.querySelector(".pm-warning");
             modeSelection = modeSelection.value;
           
             // If selected option is "edit" => enable/disable the input field accordingly
-            if (modeSelection === 'edit') {
-                editedField.removeAttribute('disabled');
+            if (modeSelection === "edit") {
+                editedField.removeAttribute("disabled");
+                confirmBtn.setAttribute("disabled", true);
+                warning.textContent = "Edit feature coming soon.";
+                form.reset();
             } else {
-                editedField.setAttribute('disabled', true);
+                editedField.setAttribute("disabled", true);
+                form.reset();
             }
         }
 
@@ -166,16 +172,16 @@ export const modal = function() {
             e.preventDefault();
           
             // Close & Reset form, if cancel btn pressed
-            if (e.submitter.id === 'project-manager-cancel') {
+            if (e.submitter.id === "project-manager-cancel") {
                 form.reset();
                 projectManagerDialog.close();
                 return;
             }
             
-            if (modeSelection.value === 'delete') {
+            if (modeSelection.value === "delete") {
                 console.log(`You are trying to delete : ${projectSelection.value}`);
                 deleteProject(projectSelection.value);
-            } else if (modeSelection.value === 'edit') {
+            } else if (modeSelection.value === "edit") {
                 console.log(`You are trying to edit : ${projectSelection.value}`);
                 console.log(`New Project = ${editedField.value}`);
             }
@@ -185,7 +191,7 @@ export const modal = function() {
         }
         
         // Event Listeners
-        modeSelection.addEventListener('change', handleSelectChange)
+        modeSelection.addEventListener("change", handleSelectChange)
         form.addEventListener("submit", handleFormSubmit, { once : true})
     }
 
@@ -193,7 +199,7 @@ export const modal = function() {
     const addTodoModal = function (){
         const addTodoDialog = document.getElementById("add-todo-dialog");
         const form = document.querySelector(".add-todo-form");
-        const warning = document.querySelector(".warning-result");
+        const warning = document.querySelector(".task-add-warning");
 
         form.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -217,7 +223,7 @@ export const modal = function() {
                 warning.textContent = "Task name can't be empty.";
                 return;
             } else if (!allProjects.hasOwnProperty(project)) {
-                warning.textContent = "Please enter valid project name.";
+                warning.textContent = "Project name does not exist.";
                 return;
             }
 

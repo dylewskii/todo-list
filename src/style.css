@@ -334,13 +334,18 @@ footer {
     color: #1E9CED;
 }
 
-.warning-result {
+.warning,
+.pm-warning, 
+.add-project-warning {
     color: red;
     font-size: 0.6rem;
-    padding: 10px 0 0 90px;
+    padding: 20px 0 0 0px;
+    display: grid;
+    place-content: center;
 }
 
-input[type="text"]:disabled {
+input[type="text"]:disabled, 
+.nes-btn:disabled {
     background-color: rgb(183, 183, 183);
 }
 
