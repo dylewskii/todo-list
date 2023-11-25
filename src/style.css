@@ -93,9 +93,6 @@ body {
 }
 
 .tab--active {
-    /* background-color: #1E9CED; blue */
-    /* background-color: rgb(246,167,35); orange */
-    /* background-color: rgb(13,131,62); dark green */ 
     background-color: rgb(105, 183, 104);
     height: 2.5rem;
     box-shadow: none;
@@ -103,7 +100,6 @@ body {
 
 .tab--active:hover {
     background-color: rgb(86, 153, 85);
-    height: 2.5rem;
     box-shadow: inset -4px -4px #508b4f;
     outline: none;
 }
@@ -356,7 +352,7 @@ input[type="text"]:disabled {
 
 .dialog-title {
     font-size: 1.2rem;
-    color: #1E9CED;
+    color: #444;
     text-decoration: underline;
 }
 
@@ -443,31 +439,6 @@ form label {
 }
 
 @media (min-width: 1024px){
-    .header-title {
-        font-size: 3rem;
-    }
-
-    .task-container {
-        width: 850px;
-        margin: 0 auto;
-    }
-
-    .tab-container {
-        margin: 10px 10px;
-    }
-
-    .todo-controls {
-        margin: 0 auto;
-    }
-
-    .pad {
-        left: 30%;
-    }
-
-    .power-btns {
-        left: 20%;
-    }
-
     .AB-btns {
         right: 60%
     }
