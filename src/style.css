@@ -43,7 +43,7 @@ body {
 }
 
 .pop {
-    color: #1E9CED;
+    color: rgb(237,231,66);
 }
 
 .subheader {
@@ -78,23 +78,34 @@ body {
     overflow-x: hidden;
     background-color: #d7d7d7;
 }
-.task-container, .tab-container {
-    width: 100%;
-}
-
-.task-container > .nes-container.is-rounded {
-    padding: 0;
-    margin-bottom: 20px;
-}
 
 /* 1 - Tabs */
 .tab-container {
     flex-shrink: 0; 
 }
 
+.task-container, .tab-container {
+    width: 100%;
+}
+
+.tab-btn {
+    padding: 3px;
+}
+
 .tab--active {
-    background-color: #1E9CED;
+    /* background-color: #1E9CED; blue */
+    /* background-color: rgb(246,167,35); orange */
+    /* background-color: rgb(13,131,62); dark green */ 
+    background-color: rgb(105, 183, 104);
     height: 2.5rem;
+    box-shadow: none;
+}
+
+.tab--active:hover {
+    background-color: rgb(86, 153, 85);
+    height: 2.5rem;
+    box-shadow: inset -4px -4px #508b4f;
+    outline: none;
 }
 
 .tab--active:focus {
@@ -112,10 +123,15 @@ body {
     height: 500px;
 }
 
+.task-container > .nes-container.is-rounded {
+    padding: 0;
+    margin-bottom: 20px;
+}
+
 .task {
     display: grid;
-    grid-template-columns: 10% 10% 35% 45%;
-    justify-content: center;
+    grid-template-columns: 7% 7% 51% 35%;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
     min-height: 60px;
@@ -125,9 +141,6 @@ body {
     background-color: white;
 }
 
-.task--completed {
-    background-color: rgb(105,183,104);
-}
 
 .task__priority {
     grid-column: 1;
@@ -162,13 +175,22 @@ body {
 }
 
 .task__title > p {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
 }
 
 .task-btn {
     width: 50px;
     margin: 0 10px;
     font-size: 0.4rem;
+}
+
+#info-btn, #delete-btn {
+    width: min-content;
+    padding: 0 6px;
+}
+
+.task--completed {
+    background-color: rgb(105,183,104);
 }
 
 /* --- TODO Controls --- */
@@ -183,7 +205,7 @@ body {
     background-color: #d7d7d7;
 }
 
-/* todo item 1 */
+/* todos 1 */
 .pad {
     position: absolute;
     top: 30%;
@@ -197,7 +219,7 @@ body {
     position: relative;
     width: 30px;
     height: 100px;
-    background: #444;
+    background-color: #444;
     border-radius: 5px;
 }
 
@@ -210,7 +232,7 @@ body {
     transform: rotate(90deg);
 }
 
-/* todo item 2 */
+/* todo 2 */
 .power-btns {
     grid-row: 2;
     grid-column: 2;
@@ -220,13 +242,13 @@ body {
     margin: 20px auto;
     height: 12px;
     width: 60px;
-    background: #999;
+    background-color: #999;
     border-radius: 10px;
     transform: rotate(-25deg);
     box-shadow: 57px 27px #999, 0 0 0 5px #dfdfdf, 57px 27px 0 5px #dfdfdf;
 }
   
-/* todo item 3 */
+/* todo 3 */
 .AB-btns {
     grid-row: 1;
     grid-column: 3;
@@ -234,11 +256,11 @@ body {
     justify-content: space-evenly;
     align-items: center;
     position: absolute;
-    right: 5%;
+    right: 10%;
     width: 160px;
     height: 60px;
     margin: 70px 30px 0 0;
-    background: #DFDFDF;
+    background-color: #DFDFDF;
     border-radius: 30px;
     transform: rotate(-25deg);
 }
@@ -248,11 +270,11 @@ body {
     border-radius: 100%;
     width: 50px;
     height: 50px;
-    background: #A93671;
+    background-color: #A93671;
 }
 
-.AB-btns > button:active {
-    box-shadow: inset 0px 0px 5px #ee56a4;
+.AB-btns > button:hover {
+    background-color: #882c5c;
 }
 
 .AB-btns > button:focus {
@@ -260,12 +282,22 @@ body {
 }
 
 .project-manager-icon {
-    max-width: 40px;
-    max-height: 40px;
+    max-width: 35px;
+    max-height: 35px;
 }
 
 .project-manager-btn:focus {
     outline: none;
+}
+
+.add-btn, .project-manager-btn {
+    width: 40px;
+    height: 40px;
+    transform: rotate(-5deg);
+}
+
+.add-btn {
+    font-size: 1.5rem;
 }
 
 /* todo extras */
@@ -279,13 +311,6 @@ body {
 
 .add-project-btn:focus {
     outline: none;
-}
-
-.add-btn, .project-manager-btn {
-    width: 70px;
-    height: 70px;
-    font-size: 1.5rem;
-    transform: rotate(-5deg);
 }
 
 /* --- Footer --- */

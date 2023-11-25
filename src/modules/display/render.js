@@ -38,8 +38,7 @@ export const render = function() {
         allProjectsArr.forEach((project, index) => {
             const newTab = document.createElement("button");
             newTab.textContent = `${changeCase(project)}`;
-            newTab.classList.add("tab-btn");
-            newTab.setAttribute("data-for-tab", `${index + 1}`);
+            newTab.classList.add("tab-btn", "nes-btn");
             tabContainer.appendChild(newTab);
         })
 
@@ -174,7 +173,7 @@ export const render = function() {
 
             const infoBtn = document.createElement("button");
             infoBtn.classList.add("task-btn", "nes-btn");
-            infoBtn.id = "infoBtn";
+            infoBtn.id = "info-btn";
             infoBtn.textContent = "i";
             infoBtn.addEventListener("click", (e) => {
                 modalController.infoModal(e);
@@ -182,7 +181,7 @@ export const render = function() {
 
             const editBtn = document.createElement("button");
             editBtn.classList.add("task-btn", "nes-btn");
-            editBtn.id = "editBtn";
+            editBtn.id = "edit-btn";
             editBtn.textContent = "Edit";
             editBtn.addEventListener("click", (e) => {
                 modalController.editModal(e);
@@ -190,7 +189,7 @@ export const render = function() {
 
             const deleteBtn = document.createElement("button");
             deleteBtn.classList.add("task-btn", "nes-btn", "is-error");
-            deleteBtn.id = "deleteBtn";
+            deleteBtn.id = "delete-btn";
             deleteBtn.innerHTML = `X`;
             deleteBtn.addEventListener("click", () => {
                 deleteTask(task, selectedTab);
